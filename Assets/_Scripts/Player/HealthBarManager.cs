@@ -13,13 +13,13 @@ public class HealthBarManager : MonoBehaviour
     [Header("FadingInAndOut")]
     [SerializeField] CanvasGroup myGroup;
     public PlayerHealth playerHealth;
-    public Rifle rifle;
+    public RifleManager rifleManager;
 
     private void Start()
     {
         myGroup = GameObject.Find("HealthAndInventoryCanvas").GetComponent<CanvasGroup>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        rifle = GameObject.FindGameObjectWithTag("Player").GetComponent<Rifle>();
+        rifleManager = GameObject.FindGameObjectWithTag("Player").GetComponent<RifleManager>();
     }
 
     public void SetMaxHealth(float health)
@@ -40,7 +40,7 @@ public class HealthBarManager : MonoBehaviour
     }
     private void FadeIn()
     {
-        if (playerHealth.tookDamage || rifle.aiming)
+        if (playerHealth.tookDamage || rifleManager.aiming)
         {
             if(myGroup.alpha < 1)
             {

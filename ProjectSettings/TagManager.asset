@@ -6,6 +6,7 @@ TagManager:
   tags:
   - HealthBar
   - aimCanvasImage
+  - AmmoPickup
   layers:
   - Default
   - TransparentFX
