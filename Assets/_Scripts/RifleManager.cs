@@ -7,7 +7,7 @@ public class RifleManager : MonoBehaviour
     [Header("Rifle Initals")]
     public Camera cam;
     public float damage = 10f;
-    public float bulletRange = 100f;
+    public float bulletRange;
     public float fireCharge = 15f;
     private float nextTimeToShoot = 0;
     public Animator anim;
@@ -30,6 +30,8 @@ public class RifleManager : MonoBehaviour
 
     [Header("Rifle Effects")]
     public ParticleSystem muzzleFlash;
+    public GameObject muzzle;
+  
     public GameObject ConcreteEffect;
 
     public AudioSource shoot;
@@ -46,6 +48,8 @@ public class RifleManager : MonoBehaviour
         shotsLeft = magazineSize;
         reservesLeft = maxReserves;
         weaponUIManager = GameObject.Find("AmmoDisplay").GetComponent<WeaponUIManager>();
+        muzzle = GameObject.FindGameObjectWithTag("Muzzle");
+        muzzleFlash.gameObject.transform.position = muzzle.transform.position;
     }
     void Update()
     {
@@ -151,7 +155,7 @@ public class RifleManager : MonoBehaviour
             shoot.PlayOneShot(shootClip);
             weaponUIManager.UpdateShotsLeft(shotsLeft);//Displays current ammo in the magazine.
 
-            //muzzleFlash.Play();
+            muzzleFlash.Play();
             RaycastHit hitInfo;
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, bulletRange))
             {

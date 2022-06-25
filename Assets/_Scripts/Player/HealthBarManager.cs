@@ -14,12 +14,14 @@ public class HealthBarManager : MonoBehaviour
     [SerializeField] CanvasGroup myGroup;
     public PlayerHealth playerHealth;
     public RifleManager rifleManager;
+    public Transform rifle;
 
     private void Start()
     {
         myGroup = GameObject.Find("HealthAndInventoryCanvas").GetComponent<CanvasGroup>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        rifleManager = GameObject.FindGameObjectWithTag("Player").GetComponent<RifleManager>();
+        //rifleManager = GameObject.FindGameObjectWithTag("PlayerRifle").GetComponent<RifleManager>();
+        rifleManager = rifle.GetComponent<RifleManager>();
     }
 
     public void SetMaxHealth(float health)

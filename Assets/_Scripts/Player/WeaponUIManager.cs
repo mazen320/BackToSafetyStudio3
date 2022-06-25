@@ -9,6 +9,8 @@ public class WeaponUIManager : MonoBehaviour
     private Text magazineText;
     [SerializeField]
     private Text reservesText;
+
+    
     // Start is called before the first frame update
     void Start()
     {
