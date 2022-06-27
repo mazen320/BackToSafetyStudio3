@@ -51,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage * Time.deltaTime;
+        currentHealth -= damage; //* Time.deltaTime;
         tookDamage = true;
         currentRegenTimer = regenTimer;
         healthBarManager.SetHealth(currentHealth);

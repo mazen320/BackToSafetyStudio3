@@ -159,7 +159,7 @@ public class Rifle : MonoBehaviour
 
             if (shootObject != null)
             {
-                shootObject.ObjectHitDamage(damage);
+                shootObject.ZombieTakeDamage(damage);
                 GameObject impactShot = Instantiate(ConcreteEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
                 Destroy(impactShot, 1f);
             }

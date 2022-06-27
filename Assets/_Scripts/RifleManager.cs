@@ -164,7 +164,7 @@ public class RifleManager : MonoBehaviour
 
                 if (shootObject != null)
                 {
-                    shootObject.ObjectHitDamage(damage);
+                    shootObject.ZombieTakeDamage(damage);
                     GameObject impactShot = Instantiate(ConcreteEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
                     Destroy(impactShot, 1f);
                 }
@@ -212,6 +212,8 @@ public class RifleManager : MonoBehaviour
 
 
     }
+
+    
 
     private void OnTriggerEnter(Collider other)
     {
