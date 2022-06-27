@@ -100,10 +100,7 @@ public class ZombieMovement : MonoBehaviour
         transform.forward = direction;
         transform.GetComponent<Rigidbody>().velocity = Vector3.MoveTowards(transform.position, player.transform.position, runningSpeed * Time.deltaTime);
     }
-    public void AttackPlayer()
-    {
-
-    }
+  
     private void OnDrawGizmos()
     {
 

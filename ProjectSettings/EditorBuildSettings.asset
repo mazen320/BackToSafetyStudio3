@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Prototype Scenes/Hasan's Scene.unity
+    guid: 09f2dc96a9fe15f4cb9db4069060dad6
   m_configObjects: {}

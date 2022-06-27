@@ -18,7 +18,7 @@ public class PlayerPunch : MonoBehaviour
 
             if (shootObject != null)
             {
-                shootObject.ObjectHitDamage(dmg);
+                shootObject.ZombieTakeDamage(dmg);
             }
         }
     }
