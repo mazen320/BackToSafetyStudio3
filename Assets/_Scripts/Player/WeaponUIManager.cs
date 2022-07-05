@@ -7,6 +7,10 @@ public class WeaponUIManager : MonoBehaviour
 {
     [SerializeField]
     private Text magazineText;
+    [SerializeField]
+    private Text reservesText;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +22,12 @@ public class WeaponUIManager : MonoBehaviour
     {
         
     }
-    public void UpdateAmmo(int count)
+    public void UpdateShotsLeft(int magazine)
     {
-        magazineText.text = count.ToString();
+        magazineText.text = magazine.ToString();
+    }
+    public void UpdateReservesLeft(int reserves)
+    {
+        reservesText.text = reserves.ToString();
     }
 }

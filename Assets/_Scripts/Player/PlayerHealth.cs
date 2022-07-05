@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Local Variables")]
     public float currentHealth;
     public float maxHealth;//For resetting health.
     public int regenRate;
@@ -11,9 +12,10 @@ public class PlayerHealth : MonoBehaviour
     public float regenTimer;//For resetting timer.
     public bool tookDamage;
 
+    [Header("UI Managemnt")]
     public GameObject healthBar;
     public HealthBarManager healthBarManager;//Manages the UI for the healthbar.
-
+    public DamageUIManager damageUIManager;
     public Menus menus;
 
     // Start is called before the first frame update
@@ -49,11 +51,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage * Time.deltaTime;
+        currentHealth -= damage; //* Time.deltaTime;
         tookDamage = true;
         currentRegenTimer = regenTimer;
         healthBarManager.SetHealth(currentHealth);
         PossiblyDie(currentHealth);//Player death function.
+        damageUIManager.myGroup.alpha = 1;
     }
 
     private void StartRegenTimer()//Whenever the player loses health somehow, either from an enemy or environment, bool tookDamage will be true.

@@ -143,23 +143,23 @@ public class Rifle : MonoBehaviour
         }
         currentAmmo--;
         shoot.PlayOneShot(shootClip);
-        weaponUIManager.UpdateAmmo(currentAmmo);//Displays current ammo.
+        weaponUIManager.UpdateShotsLeft(currentAmmo);//Displays current ammo.
         if (currentAmmo == 0)
         {
             magazinesLeft--;
         }
         //update ui when implemented from here
 
-        muzzleFlash.Play();
+        //muzzleFlash.Play();
         RaycastHit hitInfo;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, bulletRange))
         {
-            Debug.Log(hitInfo.transform.name);
+            Debug.Log("You shot at " + hitInfo.transform.name);
             ShootObject shootObject = hitInfo.transform.GetComponent<ShootObject>();
 
             if (shootObject != null)
             {
-                shootObject.ObjectHitDamage(damage);
+                shootObject.ZombieTakeDamage(damage);
                 GameObject impactShot = Instantiate(ConcreteEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
                 Destroy(impactShot, 1f);
             }
@@ -179,7 +179,7 @@ public class Rifle : MonoBehaviour
         anim.SetBool("Reloading", false);
 
         currentAmmo = maxAmmo;
-        weaponUIManager.UpdateAmmo(currentAmmo);//Displays current ammo.
+        weaponUIManager.UpdateShotsLeft(currentAmmo);//Displays current ammo.
         player.playerSpeed = 1.9f;
         player.playerSprint = 3;
         isReloading = false;
