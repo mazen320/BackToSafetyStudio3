@@ -6,6 +6,7 @@ public class RifleManager : MonoBehaviour
 {
     [Header("Rifle Initals")]
     public Camera cam;
+    public int rotationSpeed;
     public float damage = 10f;
     public float bulletRange;
     public float fireCharge = 15f;
@@ -13,6 +14,7 @@ public class RifleManager : MonoBehaviour
     public Animator anim;
     public PlayerScript player;
     public Transform hand;
+    //public GameObject targetObj;
 
     [Header("Rifle shooting and ammunitition")]
     public int shotsLeft;
@@ -24,6 +26,9 @@ public class RifleManager : MonoBehaviour
     public bool shootingAndWalking;
     public bool aiming;
     public bool aimingAndShooting;
+    public bool aimingAndWalking;
+    public bool running;
+    public bool runningAndAiming;
     public float reloadTime = 1.3f;
     private bool isReloading = false;
     private WeaponUIManager weaponUIManager;
@@ -31,7 +36,7 @@ public class RifleManager : MonoBehaviour
     [Header("Rifle Effects")]
     public ParticleSystem muzzleFlash;
     public GameObject muzzle;
-  
+
     public GameObject ConcreteEffect;
 
     public AudioSource shoot;
@@ -50,6 +55,7 @@ public class RifleManager : MonoBehaviour
         weaponUIManager = GameObject.Find("AmmoDisplay").GetComponent<WeaponUIManager>();
         muzzle = GameObject.FindGameObjectWithTag("Muzzle");
         muzzleFlash.gameObject.transform.position = muzzle.transform.position;
+        rotationSpeed = 20;
     }
     void Update()
     {
@@ -96,6 +102,14 @@ public class RifleManager : MonoBehaviour
         {
             aiming = false;
         }
+        if (Input.GetButton("Fire2") && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            aimingAndWalking = true;
+        }
+        else
+        {
+            aimingAndWalking = false;
+        }
         if (Input.GetButton("Fire2") && Input.GetButton("Fire1"))
         {
             aimingAndShooting = true;
@@ -104,6 +118,15 @@ public class RifleManager : MonoBehaviour
         {
             aimingAndShooting = false;
         }
+        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            running = true;
+        }
+        else
+        {
+            running = false;
+        }
+        
     }
     private void ShotHandler()
     {
@@ -128,6 +151,8 @@ public class RifleManager : MonoBehaviour
             anim.SetBool("IdleAim", true);
             anim.SetBool("FireWalk", false);
             anim.SetBool("Idle", false);
+            
+            player.transform.rotation = Quaternion.Lerp(player.transform.rotation, cam.transform.rotation, rotationSpeed * Time.deltaTime);
         }
         else if (aimingAndShooting)
         {
@@ -136,6 +161,17 @@ public class RifleManager : MonoBehaviour
             anim.SetBool("FireWalk", true);
             anim.SetBool("Walk", true);
             anim.SetBool("Reloading", false);
+        }
+        else if (aimingAndWalking)
+        {
+            anim.SetBool("RifleWalk", true);
+            anim.SetBool("Idle", false);
+            anim.SetBool("IdleAim", false);
+            anim.SetBool("FireWalk", false);
+            anim.SetBool("Walk", false);
+            anim.SetBool("Reloading", false);
+
+            //player.transform.rotation = Quaternion.Lerp(player.transform.rotation, cam.transform.rotation, rotationSpeed * Time.deltaTime);
         }
         else
         {

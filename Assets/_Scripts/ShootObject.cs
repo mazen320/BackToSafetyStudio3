@@ -6,8 +6,7 @@ using UnityEngine;
 public class ShootObject : MonoBehaviour
 {
     public float currentHealth;
-    [SerializeField]
-    ZombieUIHealthManager zombieUIHealthManager;
+    public ZombieUIHealthManager zombieUIHealthManager;
     public GameObject damageText;
     public float maxHealth;
 
@@ -17,6 +16,15 @@ public class ShootObject : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
+        /*damageText = GameObject.Find("RifleDamage");
+        zombieUIHealthManager = FindObjectOfType<ZombieUIHealthManager>();*/
+    }
+    private void Update()
+    {
+        if(currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void ZombieTakeDamage(float dmg)

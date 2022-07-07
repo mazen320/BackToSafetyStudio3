@@ -1112,7 +1112,7 @@ GameObject:
   - component: {fileID: 2437154918820703048}
   - component: {fileID: 2437154918820703052}
   - component: {fileID: 2437154918820703053}
-  - component: {fileID: 2437154918820703055}
+  - component: {fileID: 8205072050259150769}
   m_Layer: 0
   m_Name: RomeroZombie
   m_TagString: Untagged
@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc1e2699abecc14384d23f3adb0f4aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 500
+  damage: 10
   zombieMovement: {fileID: 2437154918820703053}
   playerHealth: {fileID: 0}
   melee: {fileID: 2437154918633725016}
@@ -1214,7 +1214,7 @@ MonoBehaviour:
   footSteps: {fileID: 2437154918068878531}
   footStepsClip: {fileID: 8300000, guid: 429f2988b0e51214292dbe6fbdf5d397, type: 3}
   soundRepeatTimer: 0
---- !u!114 &2437154918820703055
+--- !u!114 &8205072050259150769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1229,7 +1229,7 @@ MonoBehaviour:
   currentHealth: 0
   zombieUIHealthManager: {fileID: 0}
   damageText: {fileID: 5959923637894835053, guid: 2171caea512460e4f8535b8996bd280b, type: 3}
-  maxHealth: 10
+  maxHealth: 50
   spawnOffset: {x: 0, y: 1, z: 0}
 --- !u!1 &3320348226911373776
 GameObject:
