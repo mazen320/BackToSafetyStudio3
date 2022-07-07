@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 
     public void onPlayButton()
     {
-        SceneManager.LoadScene("Mazen's Scene");
+        SceneManager.LoadScene("Hasan's Scene");
     }
 
     public void onQuitButton()
