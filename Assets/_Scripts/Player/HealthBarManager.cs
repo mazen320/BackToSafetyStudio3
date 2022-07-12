@@ -53,7 +53,7 @@ public class HealthBarManager : MonoBehaviour
 
     private void FadeOut()
     {
-        if (playerHealth.tookDamage == false)
+        if (playerHealth.tookDamage == false || playerHealth.currentRegenTimer <= 0)
         {
             if (myGroup.alpha >= 0)
             {

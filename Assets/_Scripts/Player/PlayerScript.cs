@@ -30,6 +30,10 @@ public class PlayerScript : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
+    [Header("References")]
+    public RifleManager rifleManager;
+    public WeaponUIManager weaponUIManager;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -128,4 +132,16 @@ public class PlayerScript : MonoBehaviour
     {
         footStep.PlayOneShot(footStepClip);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "AmmoPickup")
+        {
+            rifleManager.reservesLeft += rifleManager.ammoRefil;
+            weaponUIManager.UpdateReservesLeft(rifleManager.reservesLeft);
+            rifleManager.reload.PlayOneShot(rifleManager.reloadClip);
+            Debug.Log("Picked up ammo");
+            Destroy(other.gameObject, 1f);
+        }
+    }
+
 }

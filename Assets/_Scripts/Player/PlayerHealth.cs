@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public int regenRate;
     public float currentRegenTimer;
     public float regenTimer;//For resetting timer.
+    public int healthGainAmount;
     public bool tookDamage;
 
     [Header("UI Managemnt")]
@@ -17,6 +18,9 @@ public class PlayerHealth : MonoBehaviour
     public HealthBarManager healthBarManager;//Manages the UI for the healthbar.
     public DamageUIManager damageUIManager;
     public Menus menus;
+
+    public AudioSource heal;
+    public AudioClip healClip;
 
     // Start is called before the first frame update
     private void Awake()
@@ -42,9 +46,9 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = 40;
         }*/
-
-        StartRegenTimer();
-        RegenerateHealth(regenRate);
+        currentRegenTimer -= Time.deltaTime;
+        CheckRegenTimer();
+        //RegenerateHealth(regenRate);
         Debug.Log("Player health is " + currentHealth);
         healthBarManager.playerHealthSlider.value = currentHealth;
     }
@@ -59,15 +63,20 @@ public class PlayerHealth : MonoBehaviour
         damageUIManager.myGroup.alpha = 1;
     }
 
-    private void StartRegenTimer()//Whenever the player loses health somehow, either from an enemy or environment, bool tookDamage will be true.
+    private void CheckRegenTimer()//Whenever the player loses health somehow, either from an enemy or environment, bool tookDamage will be true.
     {
-        if (tookDamage)
+       /* if (tookDamage)
         {
             currentRegenTimer -= Time.deltaTime;
-        }
+        }*/
         if (currentRegenTimer <= 0)
         {
             currentRegenTimer = 0;
+            tookDamage = false;
+        }
+        else
+        {
+            tookDamage = true;
         }
     }
 
@@ -80,15 +89,31 @@ public class PlayerHealth : MonoBehaviour
             if (currentHealth >= maxHealth)
             {
                 currentHealth = maxHealth;
-                tookDamage = false;
+                //tookDamage = false;
             }
         }
+    }
+    public void GainHealth()
+    {
+        currentHealth += healthGainAmount;
+        healthBarManager.SetHealth(currentHealth);
+        tookDamage = false;
     }
     public void PossiblyDie(float healthLevel)
     {
         if(healthLevel <= 0)
         {
             menus.Pause();
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "HealthPickUp" && currentHealth < maxHealth)
+        {
+            currentRegenTimer = regenTimer;
+            GainHealth();
+            heal.PlayOneShot(healClip);
+            Destroy(other.gameObject);
         }
     }
 }

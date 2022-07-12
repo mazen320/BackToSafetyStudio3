@@ -14,6 +14,7 @@ public class RifleManager : MonoBehaviour
     public Animator anim;
     public PlayerScript player;
     public Transform hand;
+    Vector3 worldAimTarget;
     //public GameObject targetObj;
 
     [Header("Rifle shooting and ammunitition")]
@@ -151,8 +152,13 @@ public class RifleManager : MonoBehaviour
             anim.SetBool("IdleAim", true);
             anim.SetBool("FireWalk", false);
             anim.SetBool("Idle", false);
-            
-            player.transform.rotation = Quaternion.Lerp(player.transform.rotation, cam.transform.rotation, rotationSpeed * Time.deltaTime);
+
+            worldAimTarget = cam.transform.position;
+            worldAimTarget.y = player.transform.position.y;
+            /*GameObject rightHand = GameObject.Find("mixamorig2:RightHand");
+
+            rightHand.transform.forward = Vector3.Lerp(rightHand.transform.forward, cam.transform.forward, rotationSpeed * Time.deltaTime);*/
+            player.transform.forward = Vector3.Lerp(player.transform.forward, cam.transform.forward, rotationSpeed * Time.deltaTime);
         }
         else if (aimingAndShooting)
         {
@@ -251,15 +257,15 @@ public class RifleManager : MonoBehaviour
 
     
 
-    private void OnTriggerEnter(Collider other)
+  /*  private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == ("AmmoPickup"))
+        if (other.tag == "AmmoPickup")
         {
             reservesLeft += ammoRefil;
             weaponUIManager.UpdateReservesLeft(reservesLeft);
             Debug.Log("Picked up ammo");
             Destroy(other.gameObject, 1f);
         }
-    }
+    }*/
 
 }
