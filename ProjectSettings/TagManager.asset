@@ -10,7 +10,6 @@ TagManager:
   - PlayerRifle
   - HealthPickUp
   - AmmoPickup
-  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -18,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
+  - Interactable
   - 
-  - minimap
   - 
   - 
   - 

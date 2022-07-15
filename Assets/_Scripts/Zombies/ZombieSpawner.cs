@@ -18,6 +18,9 @@ public class ZombieSpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnZombie());
+       
+
+
     }
     private void Update()
     {
@@ -52,11 +55,11 @@ public class ZombieSpawner : MonoBehaviour
             zombies.Add(Instantiate(zombie, spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position , Quaternion.identity));
             yield return new WaitForSeconds(2);
             enemyCount++;
-            Debug.Log("There are " + enemyCount + " enemies");
+            //Debug.Log("There are " + enemyCount + " enemies");
         }
         if(enemyCount >= enemyLimit)
         {
-            Debug.Log("You have spawned max enemies");
+            //Debug.Log("You have spawned max enemies");
         }
     }
 }
