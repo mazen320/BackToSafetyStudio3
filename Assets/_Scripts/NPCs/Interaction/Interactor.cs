@@ -6,7 +6,7 @@ public class Interactor : MonoBehaviour
 {
     //Script attatched only to the player.
     [SerializeField] private Transform interactionPoint;
-    [SerializeField] private float interactionPointRadius = 1f;
+    [SerializeField] private float interactionPointRadius = 1f;//How far the player can be to interact with NPCs.
     [SerializeField] private LayerMask interactableMask;//Layer mask for the NPCs.
     [SerializeField] private InteractionPromptUI interactionPromptUI;
 
@@ -14,6 +14,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private int collidersFound;
 
     private IInteractable _interactable;
+    //public Dialogue dialogue;
 
     private void Update()
     {
@@ -24,14 +25,18 @@ public class Interactor : MonoBehaviour
             _interactable = colliders[0].GetComponent<IInteractable>();
             if(_interactable != null)
             {
+                Debug.Log("You are at " + colliders[0].gameObject.name);
                 /* _interactable.Interact(this);//this is us, we are the interactor that is interacting with this interctable variable.*/
                 if (!interactionPromptUI.isDisplayed)
                 {
-                    interactionPromptUI.OpenPanel(_interactable.interactionPrompt);
+                    interactionPromptUI.OpenPanel(_interactable.interactionPrompt);//The same game object panel is always opened it is just the text 
+                                                                                   //that changes based on which NPC's _interactable you've gotten.
                 }
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    _interactable.Interact(this);
+                    interactionPromptUI.ClosePanel();
+                    _interactable.Interact(this);//That specific NPC will do what it's programmed to do.
+                    _interactable.StopInteraction(this);
                 }
             }
         }
@@ -39,6 +44,7 @@ public class Interactor : MonoBehaviour
         {
             if(_interactable != null)
             {
+                
                 _interactable = null;
             }
             if (interactionPromptUI.isDisplayed)

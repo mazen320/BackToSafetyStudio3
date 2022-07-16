@@ -5,6 +5,7 @@ using TMPro;
 
 public class InteractionPromptUI : MonoBehaviour
 {
+    //Script for the interaction pop-ups whenever the player goes near to an NPC. Attached to "Interaction Canvas" on the player...
     private Camera mainCam;
     [SerializeField] private GameObject UIPanel;
     [SerializeField] private TextMeshProUGUI promptText;
@@ -25,9 +26,12 @@ public class InteractionPromptUI : MonoBehaviour
     }
     private void LateUpdate()
     {
-        var cameraRotation = mainCam.transform.rotation;
-        transform.LookAt(transform.position + cameraRotation * Vector3.forward, cameraRotation * Vector3.up);
-       
+        if (isDisplayed)
+        {
+            var cameraRotation = mainCam.transform.rotation;
+            transform.LookAt(transform.position + cameraRotation * Vector3.forward, cameraRotation * Vector3.up);
+        }
+
     }
     public void OpenPanel(string promptText)
     {

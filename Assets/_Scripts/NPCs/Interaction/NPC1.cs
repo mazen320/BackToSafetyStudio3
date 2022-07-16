@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class NPC1 : MonoBehaviour, IInteractable
 {
+    public GameObject dialogue;
     //Each npc will have their own version of this script and implement the IInteractable interface, so they can have their own version of the Interact(); function.
-    [SerializeField] private string prompt;
-    public string interactionPrompt => prompt;
+    [SerializeField] private string personalPrompt;
+    public string interactionPrompt => personalPrompt;//"interaactionPrompt" SInherited from the interface.
 
     public bool Interact(Interactor interactor)//Where you do something relative to the NPC.
     {
         Debug.Log("Talking to NPC1");
+        dialogue.SetActive(true);
+        dialogue.GetComponent<Dialogue>().StartDialogue();
         return true;
     }
 
-   
+    public bool StopInteraction(Interactor interactor)
+    {
+        dialogue.GetComponent<Dialogue>().CheckForNextLine();
+        return true;
+        //throw new System.NotImplementedException();
+    }
 }
