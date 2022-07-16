@@ -5,16 +5,20 @@ using UnityEngine;
 
 public class ShootObject : MonoBehaviour
 {
+    
+
     public float currentHealth;
     public ZombieUIHealthManager zombieUIHealthManager;
     public GameObject damageText;
     public float maxHealth;
+  
 
     public Vector3 spawnOffset;//For spawning damage numbers.
 
 
     private void Awake()
     {
+        
         currentHealth = maxHealth;
         /*damageText = GameObject.Find("RifleDamage");
         zombieUIHealthManager = FindObjectOfType<ZombieUIHealthManager>();*/
@@ -47,5 +51,6 @@ public class ShootObject : MonoBehaviour
     {
         Destroy(gameObject, 1f);
         Destroy(zombieUIHealthManager.gameObject, 1f);
+       
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - AmmoPickup
   - PlayerRifle
   - HealthBar
+  - Object
   layers:
   - Default
   - TransparentFX
