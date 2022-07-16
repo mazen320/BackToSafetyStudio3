@@ -4,12 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - HealthBar
+  - HealthPickUp
   - aimCanvasImage
   - Muzzle
-  - PlayerRifle
-  - HealthPickUp
   - AmmoPickup
+  - PlayerRifle
+  - HealthBar
   layers:
   - Default
   - TransparentFX
@@ -24,11 +24,11 @@ TagManager:
   - 
   - 
   - 
-  - Environment
   - 
   - 
   - 
-  - Ground
+  - 
+  - 
   - 
   - 
   - 
