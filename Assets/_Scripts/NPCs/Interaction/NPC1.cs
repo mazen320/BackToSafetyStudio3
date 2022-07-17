@@ -15,6 +15,7 @@ public class NPC1 : MonoBehaviour, IInteractable
         if (dialogue.activeInHierarchy == false)
         {
             dialogue.SetActive(true);
+            dialogue.GetComponent<Dialogue>().textComponent.text = string.Empty;
             dialogue.GetComponent<Dialogue>().StartDialogue();
         }
         return true;
@@ -23,7 +24,7 @@ public class NPC1 : MonoBehaviour, IInteractable
     public bool StopInteraction(Interactor interactor)
     {
         dialogue.GetComponent<Dialogue>().CheckForNextLine();
-        return true;
+        return false;
         //throw new System.NotImplementedException();
     }
 }

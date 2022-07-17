@@ -11,19 +11,6 @@ public class Dialogue : MonoBehaviour
 
     public int index;
 
-   /* [Header("Conditions To Write Text")]
-    public GameObject player;
-    public int distanceOffset;
-    public bool playerInRange;//If the player is near npc and 'talking' to it.
-    public GameObject npc;
-*/
-    // Start is called before the first frame update
-    void Start()
-    {
-        textComponent.text = string.Empty;
-        //StartDialogue();
-    }
-
     // Update is called once per frame
     void Update()
     {

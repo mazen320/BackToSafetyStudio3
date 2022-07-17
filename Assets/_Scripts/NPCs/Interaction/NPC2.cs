@@ -15,6 +15,7 @@ public class NPC2 : MonoBehaviour, IInteractable
         if (dialogue.activeInHierarchy == false)
         {
             dialogue.SetActive(true);
+            dialogue.GetComponent<Dialogue>().textComponent.text = string.Empty;
             dialogue.GetComponent<Dialogue>().StartDialogue();
         }
         return true;
