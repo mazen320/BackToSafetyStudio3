@@ -12,8 +12,11 @@ public class NPC2 : MonoBehaviour, IInteractable
     public bool Interact(Interactor interactor)//Where you do something relative to the NPC.
     {
         Debug.Log("I am NPC2 bro...");
-        dialogue.SetActive(true);
-        dialogue.GetComponent<Dialogue>().StartDialogue();
+        if (dialogue.activeInHierarchy == false)
+        {
+            dialogue.SetActive(true);
+            dialogue.GetComponent<Dialogue>().StartDialogue();
+        }
         return true;
     }
 
