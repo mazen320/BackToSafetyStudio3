@@ -10,6 +10,7 @@ public class ZombieSpawner : MonoBehaviour
     public Vector3 spawnPosition;*/
     public int enemyCount;
     public int enemyLimit;
+    public int killCount;
     
 
     public GameObject[] spawnPoints;
@@ -18,12 +19,7 @@ public class ZombieSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
         StartCoroutine(SpawnZombie());
-        
-       
-
-
     }
     private void Update()
     {
@@ -42,7 +38,7 @@ public class ZombieSpawner : MonoBehaviour
         {
             Destroy(zombie.gameObject);
             enemyCount--;
-           
+            killCount++;
            
             Debug.Log("There are " + enemyCount + " enemies");
         }
