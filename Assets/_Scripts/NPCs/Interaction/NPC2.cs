@@ -5,14 +5,20 @@ using UnityEngine;
 public class NPC2 : MonoBehaviour, IInteractable
 {
     public GameObject dialogue;
+    public SecondQuest secondQuest;
     //Each npc will have their own version of this script and implement the IInteractable interface, so they can have their own version of the Interact(); function.
     [SerializeField] private string personalPrompt;
     public string interactionPrompt => personalPrompt;//"interaactionPrompt" SInherited from the interface.
 
     public bool Interact(Interactor interactor)//Where you do something relative to the NPC.
     {
-        Debug.Log("I am NPC2 bro...");
-        if (dialogue.activeInHierarchy == false)
+        Debug.Log("Npc 2 Talking ");
+        if (secondQuest.objective2 == false)
+        {
+        Debug.Log("Finish first Objective ");
+
+        }
+       else if (dialogue.activeInHierarchy == false)
         {
             dialogue.SetActive(true);
             dialogue.GetComponent<Dialogue>().textComponent.text = string.Empty;

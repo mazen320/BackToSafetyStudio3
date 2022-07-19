@@ -5,7 +5,8 @@ using UnityEngine;
 public class NPC1 : MonoBehaviour, IInteractable
 {
     public GameObject dialogue;
-    public QuestMaybe quest;
+    public GameObject lockedDialogue;
+    public FirstQuest firstquest;
     //Each npc will have their own version of this script and implement the IInteractable interface, so they can have their own version of the Interact(); function.
     [SerializeField] private string personalPrompt;
     public string interactionPrompt => personalPrompt;//"interaactionPrompt" SInherited from the interface.
@@ -13,11 +14,16 @@ public class NPC1 : MonoBehaviour, IInteractable
     public bool Interact(Interactor interactor)//Where you do something relative to the NPC.
     {
         Debug.Log("Talking to NPC1");
-        if(quest.objective1 == false)
+        if (firstquest.objective1 == false)
         {
-            Debug.Log("you cant talk just yet");
+            lockedDialogue.SetActive(true);
+            lockedDialogue.GetComponent<Dialogue>().textComponent.text = string.Empty;
+            lockedDialogue.GetComponent<Dialogue>().StartDialogue();
+
+
+            //Debug.Log("you cant talk just yet");
         }
-        else if (dialogue.activeInHierarchy == false)
+        else 
         {
             dialogue.SetActive(true);
             dialogue.GetComponent<Dialogue>().textComponent.text = string.Empty;

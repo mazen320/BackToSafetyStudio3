@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class FirstQuest : QuestState
 {
+    public ZombieSpawner zombieSpawner;
+    public bool objective1;
     public override void StartState(Quest quest)
     {
-        throw new System.NotImplementedException();
+        if(zombieSpawner.killCount >= 1)
+        {
+            objective1 = true;
+        }
     }
 
-    public override void UpdateState(Quest manager)
+    public override void UpdateState(Quest quest)
     {
-        manager.SwitchState(new SecondQuest());
+        if (objective1 == true)
+        {
+            quest.SwitchState(new SecondQuest());
+        }
     }
 
 }

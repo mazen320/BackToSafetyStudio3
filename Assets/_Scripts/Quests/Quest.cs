@@ -7,6 +7,7 @@ public class Quest : MonoBehaviour
 {
     FirstQuest firstQuest;
     SecondQuest secondQuest;
+    ThirdQuest thirdQuest;
 
 
     QuestState currentState;
