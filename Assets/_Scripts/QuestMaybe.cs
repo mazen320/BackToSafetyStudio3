@@ -11,7 +11,7 @@ public class QuestMaybe : MonoBehaviour
 
     void Update()
     {
-        if (zombieSpawner.killCount > 3)
+        if (zombieSpawner.killCount > 1)
         {
             objective1 = true;
         }

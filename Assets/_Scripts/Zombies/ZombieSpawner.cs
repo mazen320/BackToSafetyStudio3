@@ -10,7 +10,7 @@ public class ZombieSpawner : MonoBehaviour
     public Vector3 spawnPosition;*/
     public int enemyCount;
     public int enemyLimit;
-    public int killCount;
+    public int killCount = 0;
     
 
     public GameObject[] spawnPoints;

@@ -2,24 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstQuest : QuestState
+/*public class FirstQuest : QuestState
 {
-    public ZombieSpawner zombieSpawner;
-    public bool objective1;
-    public override void StartState(Quest quest)
+   
+    public override void StartState(QuestManager questManager, QuestState questState)
     {
-        if(zombieSpawner.killCount >= 1)
+        questManager.currentState = questState;
+        
+    }
+
+    public override void UpdateState(QuestManager questManager)
+    {
+        if(questManager.zombieSpawner.killCount >= 1)
         {
-            objective1 = true;
+            questManager.objective1 = true;
+            Debug.Log("Quest1 is true");
+        }
+        if (questManager.objective1 == true)
+        {
+            questManager.SwitchState(new SecondQuest());
+            Debug.Log("Quest2 is ongoing");
+
         }
     }
 
-    public override void UpdateState(Quest quest)
-    {
-        if (objective1 == true)
-        {
-            quest.SwitchState(new SecondQuest());
-        }
-    }
-
-}
+}*/
