@@ -1203,7 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8c285c36a7e0045947f0ca8e377d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 3231201642045105683, guid: cb65cff5ffd10f04091c56145c897c01, type: 3}
   anim: {fileID: 8122267035524130289}
   runningSpeed: 5
   chaseRange: 6
