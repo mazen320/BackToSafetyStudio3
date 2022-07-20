@@ -55,6 +55,8 @@ public class ZombieSpawner : MonoBehaviour
              zombies.Add(Instantiate(zombie, spawnPosition, Quaternion.identity));*/
             
             zombies.Add(Instantiate(zombie, spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position , Quaternion.identity));
+            zombies[zombies.Count - 1].GetComponent<ZombieMovement>().player = GameObject.FindGameObjectWithTag("Player").transform;
+            zombies[zombies.Count - 1].GetComponent<ZombieAttack>().playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
             yield return new WaitForSeconds(2);
             enemyCount++;
             //Debug.Log("There are " + enemyCount + " enemies");
