@@ -15,13 +15,21 @@ public class QuestManager : MonoBehaviour
 
      QuestState currentState;
 
+    public PlayerScript player;
+    public bool callAnswered;
+    public float range = 2f;
+    public GameObject phone;
+
     public ZombieSpawner zombieSpawner;
+
+
     public bool objective1;
     public bool objective2;
 
 
     void Start()
     {
+        phone = GameObject.Find("Phone");
         zombieSpawner = GetComponent<ZombieSpawner>();
         firstQuest = new FirstQuest();
         secondQuest = new SecondQuest();
@@ -60,18 +68,19 @@ public class QuestManager : MonoBehaviour
     public class FirstQuest : QuestState
     {
 
-        /*public override void StartState(QuestManager questManager, QuestState questState)
-        {
-            questManager.currentState = questState;
-
-        }*/
+        
 
         public override void UpdateState(QuestManager questManager)
         {
-            if (questManager.zombieSpawner.killCount >= 1)
+            if (Vector3.Distance(questManager.phone.transform.position, questManager.player.transform.position) < questManager.range)
             {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                questManager.callAnswered = true;
                 questManager.objective1 = true;
                 Debug.Log("Quest1 is true");
+                }
+
             }
             if (questManager.objective1 == true)
             {
