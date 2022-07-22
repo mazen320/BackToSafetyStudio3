@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
 
     public Transform grounded;
     bool isGrounded;
+    public bool pickedAmmo;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
@@ -139,6 +140,7 @@ public class PlayerScript : MonoBehaviour
             rifleManager.reservesLeft += rifleManager.ammoRefil;
             weaponUIManager.UpdateReservesLeft(rifleManager.reservesLeft);
             rifleManager.reload.PlayOneShot(rifleManager.reloadClip);
+            pickedAmmo = true;
             Debug.Log("Picked up ammo");
             Destroy(other.gameObject, 1f);
         }
