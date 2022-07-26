@@ -7,7 +7,7 @@ public class InteractionPromptUI : MonoBehaviour
 {
     //Script for the interaction pop-ups whenever the player goes near to an NPC. Attached to "Interaction Canvas" on the player...
     private Camera mainCam;
-    [SerializeField] private GameObject UIPanel;
+    public GameObject UIPanel;
     [SerializeField] private TextMeshProUGUI promptText;
 
     public bool isDisplayed = false;

@@ -24,10 +24,11 @@ public class RifleManager : MonoBehaviour
     public int maxReserves = 50;
     public int ammoRefil;//Amount of ammo you get when picking up an ammo box.
     public bool shooting;
-    public bool shootingAndWalking;
+    public bool shootingAndWalkingForwards;
     public bool aiming;
     public bool aimingAndShooting;
-    public bool aimingAndWalking;
+    public bool aimingForwardStrafe;
+    public bool aimingLeftStrafe;
     public bool running;
     public bool runningAndAiming;
     public float reloadTime = 1.3f;
@@ -61,6 +62,7 @@ public class RifleManager : MonoBehaviour
     void Update()
     {
         ReadInputs();
+        ReadMovementInputs();
         if (isReloading)
             return;
 
@@ -76,6 +78,7 @@ public class RifleManager : MonoBehaviour
         }
 
         ShotHandler();
+        MovementHandler();
     }
     public void ReadInputs()
     {
@@ -89,11 +92,11 @@ public class RifleManager : MonoBehaviour
         }
         if (Input.GetButton("Fire1") && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            shootingAndWalking = true;
+            shootingAndWalkingForwards = true;
         }
         else
         {
-            shootingAndWalking = false;
+            shootingAndWalkingForwards = false;
         }
         if (Input.GetButton("Fire2"))
         {
@@ -103,14 +106,9 @@ public class RifleManager : MonoBehaviour
         {
             aiming = false;
         }
-        if (Input.GetButton("Fire2") && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-        {
-            aimingAndWalking = true;
-        }
-        else
-        {
-            aimingAndWalking = false;
-        }
+
+        //ReadMovementInputs();
+        
         if (Input.GetButton("Fire2") && Input.GetButton("Fire1"))
         {
             aimingAndShooting = true;
@@ -119,7 +117,7 @@ public class RifleManager : MonoBehaviour
         {
             aimingAndShooting = false;
         }
-        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             running = true;
         }
@@ -127,8 +125,30 @@ public class RifleManager : MonoBehaviour
         {
             running = false;
         }
-        
+
     }
+
+    private void ReadMovementInputs()
+    {
+        if (Input.GetButton("Fire2") && Input.GetKey(KeyCode.W) /*|| Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)*/)
+        {
+            aimingForwardStrafe = true;
+        }
+        else
+        {
+            aimingForwardStrafe = false;
+        }
+        if (Input.GetButton("Fire2") && Input.GetKey(KeyCode.A))
+        {
+            aimingLeftStrafe = true;
+        }
+        else
+        {
+            aimingLeftStrafe = false;
+        }
+
+    }
+
     private void ShotHandler()
     {
         if (shooting)
@@ -140,7 +160,7 @@ public class RifleManager : MonoBehaviour
             nextTimeToShoot = Time.time + 1f / fireCharge;
             Shoot();
         }
-        else if (shootingAndWalking)
+        else if (shootingAndWalkingForwards)
         {
             anim.SetBool("FireWalk", true);
             anim.SetBool("Idle", false);
@@ -168,7 +188,29 @@ public class RifleManager : MonoBehaviour
             anim.SetBool("Walk", true);
             anim.SetBool("Reloading", false);
         }
-        else if (aimingAndWalking)
+       /* else if (aimingForwardStrafe)
+        {
+            anim.SetBool("RifleWalk", true);
+            anim.SetBool("Idle", false);
+            anim.SetBool("IdleAim", false);
+            anim.SetBool("FireWalk", false);
+            anim.SetBool("Walk", false);
+            anim.SetBool("Reloading", false);
+
+            //player.transform.rotation = Quaternion.Lerp(player.transform.rotation, cam.transform.rotation, rotationSpeed * Time.deltaTime);
+        }*/
+        else
+        {
+            anim.SetBool("Idle", true);
+            anim.SetBool("FireWalk", false);
+            anim.SetBool("Fire", false);
+            anim.SetBool("IdleAim", false);
+            player.playerSpeed = 1.8f;
+        }
+    }
+    public void MovementHandler()
+    {
+        if(aimingForwardStrafe)
         {
             anim.SetBool("RifleWalk", true);
             anim.SetBool("Idle", false);
@@ -179,13 +221,15 @@ public class RifleManager : MonoBehaviour
 
             //player.transform.rotation = Quaternion.Lerp(player.transform.rotation, cam.transform.rotation, rotationSpeed * Time.deltaTime);
         }
-        else
+        else if (aimingLeftStrafe)
         {
-            anim.SetBool("Idle", true);
-            anim.SetBool("FireWalk", false);
-            anim.SetBool("Fire", false);
+            anim.SetBool("AimLeftStrafe", true);
+            anim.SetBool("RifleWalk", false);
+            anim.SetBool("Idle", false);
             anim.SetBool("IdleAim", false);
-            player.playerSpeed = 1.8f;
+            anim.SetBool("FireWalk", false);
+            anim.SetBool("Walk", false);
+            anim.SetBool("Reloading", false);
         }
     }
     private void Shoot()
