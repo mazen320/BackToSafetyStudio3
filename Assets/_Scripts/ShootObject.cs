@@ -37,7 +37,11 @@ public class ShootObject : MonoBehaviour
         Debug.Log("This zombie's health is " + currentHealth);
         DamageIndicator damageIndicator = Instantiate(damageText, transform.position + spawnOffset, Quaternion.identity).GetComponent<DamageIndicator>();
         damageIndicator.SetDamageText(dmg);
-        zombieUIHealthManager.SetZombieHealth(currentHealth);
+        if(zombieUIHealthManager != null)
+        {
+            zombieUIHealthManager.SetZombieHealth(currentHealth);
+        }
+      
         if (currentHealth <= 0f)
         {
             Die();
@@ -50,7 +54,11 @@ public class ShootObject : MonoBehaviour
     void Die()
     {
         Destroy(gameObject, 1f);
-        Destroy(zombieUIHealthManager.gameObject, 1f);
+        if(zombieUIHealthManager != null)
+        {
+            Destroy(zombieUIHealthManager.gameObject, 1f);
+        }
+       
        
     }
 }
