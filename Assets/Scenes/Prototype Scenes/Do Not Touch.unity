@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -431,6 +431,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e74fd2289406d214c9e094e2f913deb9, type: 3}
+--- !u!1 &5615685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1852480617336090, guid: e74fd2289406d214c9e094e2f913deb9, type: 3}
+  m_PrefabInstance: {fileID: 5615684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5615686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615685}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &7724978 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2484013578225645831, guid: 36892b4435bb94540a66a55337f24f25, type: 3}
@@ -9750,7 +9768,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240892961}
   m_LocalRotation: {x: 0.00209307, y: 0, z: 0, w: 0.99999785}
-  m_LocalPosition: {x: 370.24854, y: 6.836816, z: -1945.6675}
+  m_LocalPosition: {x: 369.78323, y: 6.836816, z: -1945.6675}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35159,6 +35177,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a59a6677665c95e4b941b9c87a1284b0, type: 3}
+--- !u!1 &802687837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495760572269118, guid: a59a6677665c95e4b941b9c87a1284b0, type: 3}
+  m_PrefabInstance: {fileID: 802687836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &802687838
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802687837}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &803574756 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2484013578225645831, guid: 36892b4435bb94540a66a55337f24f25, type: 3}
@@ -55132,7 +55168,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.054054, y: 1}
+    m_SensorSize: {x: 1.3292433, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 1
@@ -55149,7 +55185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254774359}
   m_LocalRotation: {x: 0.00209307, y: 0, z: 0, w: 0.99999785}
-  m_LocalPosition: {x: 370.18854, y: 5.04185, z: -1944.485}
+  m_LocalPosition: {x: 369.72324, y: 5.04185, z: -1944.485}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -62501,7 +62537,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24054
+  m_Name: pb_Mesh133028
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -90924,6 +90960,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83108cda3d32edb4880d9e49bc847c9e, type: 3}
+--- !u!1 &2035941523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1862525385124772, guid: 83108cda3d32edb4880d9e49bc847c9e, type: 3}
+  m_PrefabInstance: {fileID: 2035941522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2035941524
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035941523}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2038648640
 PrefabInstance:
   m_ObjectHideFlags: 0
