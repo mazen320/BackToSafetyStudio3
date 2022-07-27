@@ -15,7 +15,9 @@ public class ZombieSpawner : MonoBehaviour
 
     public GameObject[] spawnPoints;
     public List<GameObject> zombies;
-
+    public QuestManager questManager;
+    public bool spawnZombies = false;
+    public float spawnTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,14 @@ public class ZombieSpawner : MonoBehaviour
                 CheckZombieHealth(zombies[i]);
             }
             
+        }
+        if (spawnZombies)
+        {
+            spawnTimer -= Time.deltaTime;
+            if(spawnTimer == 0)
+            {
+                spawnZombies = false;
+            }
         }
     }
     public void CheckZombieHealth(GameObject zombie)
@@ -47,23 +57,30 @@ public class ZombieSpawner : MonoBehaviour
 
     IEnumerator SpawnZombie()
     {
-        while (enemyCount < enemyLimit)
+
+        if (questManager.objective2 && spawnZombies)
         {
-            /* xPos = Random.Range(530, 551);
-             zPos = Random.Range(200, 220);
-             spawnPosition = new Vector3(xPos, 20, zPos);
-             zombies.Add(Instantiate(zombie, spawnPosition, Quaternion.identity));*/
-            
-            zombies.Add(Instantiate(zombie, spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position , Quaternion.identity));
-            zombies[zombies.Count - 1].GetComponent<ZombieMovement>().player = GameObject.FindGameObjectWithTag("Player").transform;
-            zombies[zombies.Count - 1].GetComponent<ZombieAttack>().playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-            yield return new WaitForSeconds(2);
-            enemyCount++;
-            //Debug.Log("There are " + enemyCount + " enemies");
-        }
-        if(enemyCount >= enemyLimit)
-        {
-            //Debug.Log("You have spawned max enemies");
-        }
+            spawnTimer = 10;
+
+            while (enemyCount < enemyLimit)
+            {
+                /* xPos = Random.Range(530, 551);
+                 zPos = Random.Range(200, 220);
+                 spawnPosition = new Vector3(xPos, 20, zPos);
+                 zombies.Add(Instantiate(zombie, spawnPosition, Quaternion.identity));*/
+
+                zombies.Add(Instantiate(zombie, spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position, Quaternion.identity));
+                zombies[zombies.Count - 1].GetComponent<ZombieMovement>().player = GameObject.FindGameObjectWithTag("Player").transform;
+                zombies[zombies.Count - 1].GetComponent<ZombieAttack>().playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+                yield return new WaitForSeconds(2);
+                enemyCount++;
+                //Debug.Log("There are " + enemyCount + " enemies");
+            }
+            if (enemyCount >= enemyLimit)
+            {
+                //Debug.Log("You have spawned max enemies");
+            }
+        }   
+       
     }
 }
