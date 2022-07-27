@@ -6,7 +6,7 @@ public interface IInteractable
 {
     
     public string interactionPrompt { get; }
-
+    
     public void DisablePlayerMovement(PlayerScript playerScript, RifleManager playersRifle, SwitchCamera playersCamera)
     {
         playerScript.enabled = false;
