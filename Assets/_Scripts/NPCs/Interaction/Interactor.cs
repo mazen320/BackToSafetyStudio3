@@ -20,6 +20,14 @@ public class Interactor : MonoBehaviour
     public PlayerScript playerScript;
     public RifleManager rifleManager;
     public SwitchCamera switchCamera;
+
+    public void Start()
+    {
+        playerScript = GetComponent<PlayerScript>();
+        rifleManager = GameObject.Find("WPN_AKM").GetComponent<RifleManager>();
+        switchCamera = GameObject.Find("WPN_AKM").GetComponent<SwitchCamera>();
+
+    }
     private void Update()
     {
         collidersFound = Physics.OverlapSphereNonAlloc(interactionPoint.position, interactionPointRadius, colliders, interactableMask);//finds up to 3 npc colliders within range of the interaction point of the player.
