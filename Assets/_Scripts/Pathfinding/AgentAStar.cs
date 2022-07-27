@@ -38,7 +38,7 @@ public class AgentAStar : MonoBehaviour
     public void FollowPath()    // the player's position was not updating so i made this script
     {
         CancelInvoke();
-        InvokeRepeating("BuildPath", 0, 0.3f);
+        InvokeRepeating("BuildPath", 0, 0.2f);
     }
     void BuildPath()
     {
