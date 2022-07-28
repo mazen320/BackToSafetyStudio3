@@ -12,7 +12,7 @@ public class Menus : MonoBehaviour
 
     public static bool GameisStopped = false;
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {

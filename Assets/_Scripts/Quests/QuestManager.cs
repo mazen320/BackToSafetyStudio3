@@ -26,7 +26,7 @@ public class QuestManager : MonoBehaviour
     public bool objective1;
     public bool objective2;
 
-
+    ZombieSpawner zombieSpawner;
     void Start()
     {
         phone = GameObject.Find("Phone");
@@ -101,6 +101,7 @@ public class QuestManager : MonoBehaviour
             if (questManager.player.pickedAmmo == true)
             {
                questManager.objective2 = true;
+                questManager.zombieSpawner.spawnZombies = true;
                 Debug.Log("Quest2 is true");
             }
             if (questManager.objective2 == true)
