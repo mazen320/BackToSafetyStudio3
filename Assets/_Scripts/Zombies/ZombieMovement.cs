@@ -28,6 +28,8 @@ public class ZombieMovement : MonoBehaviour
     void Update()
     {
         CheckPlayerDistance();
+        transform.LookAt(player);
+
         soundRepeatTimer += Time.deltaTime;
         if (inChaseRange && !inAttackRange)
         {

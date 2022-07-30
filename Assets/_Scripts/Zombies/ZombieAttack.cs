@@ -13,13 +13,6 @@ public class ZombieAttack : MonoBehaviour
     public AudioSource melee;
     public AudioClip meleeClip;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         //DamagePlayer();

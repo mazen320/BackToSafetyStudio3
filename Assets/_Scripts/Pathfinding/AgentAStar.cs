@@ -35,10 +35,11 @@ public class AgentAStar : MonoBehaviour
 
     /*      METHODS
     */
+    //if statement to check if currenttile has moved by +3
     public void FollowPath()    // the player's position was not updating so i made this script
     {
         CancelInvoke();
-        InvokeRepeating("BuildPath", 0, 0.2f);
+        InvokeRepeating("BuildPath", 0, 0.5f);
     }
     void BuildPath()
     {
@@ -52,7 +53,7 @@ public class AgentAStar : MonoBehaviour
     void Move()
     {
         Vector3 targetDirection = path[currentWaypoint].WorldPosition - rb.position;
-        rb.MovePosition(rb.position + (targetDirection * Time.fixedDeltaTime * Speed));
+        rb.MovePosition(rb.position + (targetDirection* Time.fixedDeltaTime * Speed));
     }
     void CheckWaypoint()
     {
