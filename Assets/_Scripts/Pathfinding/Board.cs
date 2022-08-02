@@ -35,7 +35,7 @@ public class Board : MonoBehaviour
             return;
             Gizmos.color = Color.red;
         foreach(TileLogic t in Tiles.Values){   //otherwise this
-            Gizmos.DrawCube(t.WorldPosition, Vector3.one*(NodeSize));
+            Gizmos.DrawCube(t.WorldPosition, Vector3.one*(NodeSize/2));
         }
     }
     public static TileLogic GetTile(Vector2Int position)

@@ -28,6 +28,8 @@ public class ZombieMovement : MonoBehaviour
     void Update()
     {
         CheckPlayerDistance();
+        transform.LookAt(player);
+
         soundRepeatTimer += Time.deltaTime;
         if (inChaseRange && !inAttackRange)
         {
@@ -57,6 +59,7 @@ public class ZombieMovement : MonoBehaviour
             anim.SetBool("inAttackRange", false);
             anim.SetBool("inChaseRange", false);
         }
+        
         /*  if(inChaseRange && !inAttackRange)
           {
               anim.SetBool("inChaseRange", true);
@@ -99,6 +102,7 @@ public class ZombieMovement : MonoBehaviour
         Vector3 direction = player.transform.position;
         transform.forward = direction;
         transform.GetComponent<Rigidbody>().velocity = Vector3.MoveTowards(transform.position, player.transform.position, runningSpeed * Time.deltaTime);
+        anim.SetBool("inChaseRange", true);
     }
   
     private void OnDrawGizmos()
