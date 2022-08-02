@@ -10,7 +10,8 @@ public class AgentController : MonoBehaviour
     {
         agents = new List<AgentAStar>();
         agents.AddRange(GetComponentsInChildren<AgentAStar>());
-        Invoke("VeryLateStart", 0.1f);
+        //Invoke("VeryLateStart", 0.1f);
+        VeryLateStart();
     }
     public void VeryLateStart()
     {
