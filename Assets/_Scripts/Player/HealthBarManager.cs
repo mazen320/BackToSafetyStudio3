@@ -42,7 +42,7 @@ public class HealthBarManager : MonoBehaviour
     }
     private void FadeIn()
     {
-        if (playerHealth.tookDamage || rifleManager.aiming)
+        if (playerHealth.tookDamage || rifleManager.playerAnimator.aiming)
         {
             if(myGroup.alpha < 1)
             {

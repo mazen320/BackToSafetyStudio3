@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
     [Header("Player Movement")]
     public float playerSpeed = 1.8f;
     public float playerSprint = 3f;
-
+   
     [Header("Player Camera")]
     public Transform playerCamera;
 
@@ -22,24 +22,19 @@ public class PlayerScript : MonoBehaviour
     Vector3 velocity;
 
     [Header("Animation Control")]
+
     public Animator anim;
     public string currentAnimState;
 
     //Aiming and 'x' animations.
     const string idle = "Idle";
-    /* const string idleAim = "IdleAim";
-     const string aimForwardWalk = "AimForwardWalk";
-     const string aimBackwardWalk = "AimBackwardWalk";
-     const string strafeLeft = "StrafeLeft";
-     const string strafeRight = "StrafeRight";*/
 
     //Animations when there is no aiming down sights.
     const string walk = "Walk";
     const string running = "Running";
-    //const string crossPunch = "CrossPunch";
-
-
-
+ 
+    public float timeOfLastFunctionCall;
+    public float interval = 5;
 
 
     public AudioSource footStep;
@@ -52,6 +47,7 @@ public class PlayerScript : MonoBehaviour
     public LayerMask groundMask;
 
     [Header("References")]
+    public PlayerAnimator playerAnimator;
     public RifleManager rifleManager;
     public WeaponUIManager weaponUIManager;
 
@@ -61,14 +57,7 @@ public class PlayerScript : MonoBehaviour
     }
     void Update()
     {
-        /* if (Input.GetKeyDown(KeyCode.J))
-         {
-             ChangeAnimationState(walk);
-         }
-         if (Input.GetKeyDown(KeyCode.L))
-         {
-             anim.StopPlayback();
-         }*/
+      
         isGrounded = Physics.CheckSphere(grounded.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
@@ -81,59 +70,8 @@ public class PlayerScript : MonoBehaviour
         playerMovement();//Done.
         //Jump();
         Sprint();//Done.
-        //ReadAnimationInputs();
     }
-    public void ChangeAnimationState(string newState)
-    {
-
-        if (currentAnimState == newState)//Stops the current animation from interrupting itself.
-        {
-            return;
-        }
-        /* currentAnimState = newState;
-         float animProgress = 0;//how close the current animation is to finishing.
-         float animLength = 0;//total length of the current animation.
-         RuntimeAnimatorController ac = anim.runtimeAnimatorController;
-         Debug.Log("ac is " + ac);
-
-         for (int i = 0; i < ac.animationClips.Length; i++)
-         {
-             if (ac.animationClips[i].name == currentAnimState)
-             {
-                 animLength = ac.animationClips[i].length;//animation length in seconds.
-             }
-         }
-         animProgress += Time.deltaTime;
-         if (animProgress >= animLength)
-         {
-             anim.Play(newState);
-             animProgress = 0;
-         }*/
-
-        //anim.CrossFade(newState, 0.1f);
-        //anim.Play(newState);
-        //StartCoroutine(PlayAnimation(newState));
-        anim.Play(newState);
-        currentAnimState = newState;
-
-    }
-    IEnumerator PlayAnimation(string desiredAnimation)
-    {
-        anim.Play(desiredAnimation);
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-    }
-    /*public void ReadAnimationInputs()
-    {
-        if (Input.GetButtonDown("W"))
-        {
-            ChangeAnimationState(walk);
-        }
-        if (Input.GetButtonUp("W"))
-        {
-            ChangeAnimationState(idle);
-        }
-    }*/
-
+   
     void playerMovement()
     {
         float horizontal_axis = Input.GetAxisRaw("Horizontal");
@@ -143,14 +81,15 @@ public class PlayerScript : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
+            if (!Input.GetKey(KeyCode.LeftShift))
+            {
+                playerAnimator.isWalking = true;
 
-            /* anim.SetBool("Idle", false);
-             anim.SetBool("Walk", true);
-             anim.SetBool("Running", false);
-             anim.SetBool("RifleWalk", false);
-             anim.SetBool("IdleAim", false);*/
-
-            ChangeAnimationState(walk);
+            }
+            else
+            {
+                playerAnimator.isWalking = false;
+            }
 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.eulerAngles.y; //we use the y angle for the camera so its left and right rather than up and down 
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
@@ -161,10 +100,8 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            /* anim.SetBool("Walk", false);
-             anim.SetBool("Idle", true);
-             anim.SetBool("Running", false);*/
-            ChangeAnimationState(idle);
+            playerAnimator.isWalking = false;
+            Debug.Log("You stopped");
         }
     }
 
@@ -185,8 +122,9 @@ public class PlayerScript : MonoBehaviour
 
     void Sprint()   //same thing from playermove just changed one variable to playersprint
     {
-        if (Input.GetButton("Sprint") && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
+            playerAnimator.isRunning = true;
             float horizontal_axis = Input.GetAxisRaw("Horizontal");
             float vertical_axis = Input.GetAxisRaw("Vertical");
 
@@ -194,9 +132,6 @@ public class PlayerScript : MonoBehaviour
 
             if (direction.magnitude >= 0.1f)
             {
-                /*anim.SetBool("Walk", false);
-                anim.SetBool("Running", true);*/
-                ChangeAnimationState(running);
 
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.eulerAngles.y; //we use the y angle for the camera so its left and right rather than up and down 
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
@@ -205,12 +140,10 @@ public class PlayerScript : MonoBehaviour
                 Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 cC.Move(moveDirection.normalized * playerSprint * Time.deltaTime);
             }
-            else
-            {
-                /*anim.SetBool("Walk", true);
-                anim.SetBool("Running", false);*/
-                ChangeAnimationState(walk);
-            }
+        }
+        else
+        {
+            playerAnimator.isRunning = false;
         }
     }
     public void PlayFootStep()
