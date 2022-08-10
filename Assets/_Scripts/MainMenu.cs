@@ -9,7 +9,16 @@ public class MainMenu : MonoBehaviour
 
     public void onPlayButton()
     {
-        SceneManager.LoadScene("Hasan's Scene");
+        SceneManager.LoadScene("Main Scene");
+    }
+
+    public void OpenOptions()
+    {
+
+    }
+    public void CloseOptions()
+    {
+
     }
 
     public void onQuitButton()
