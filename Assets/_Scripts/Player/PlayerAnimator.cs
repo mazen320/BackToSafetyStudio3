@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     /// <summary>
-    /// This class will controll all animation transitions for the player and for the zombies. It will be the ONLY class that changes animations, so that no class overrides another.
+    /// This class will control all animation transitions for the player and for the zombies. It will be the ONLY class that changes animations, so that no class overrides another.
     /// It is simply the bools required for a specific animation to play that will be set from their respective classes. This class checks if those bools are true or false...
     /// </summary>
     public Animator animator;
+    public float transitionDuration;
 
     [Header("Boolean Checks")]
     public bool isWalking;
@@ -116,14 +117,14 @@ public class PlayerAnimator : MonoBehaviour
     }
     private void ChangeAnimationState(string newState)
     {
-        bool sameState = currentAnimState == newState;
-        print("same state?: " + sameState);
-        if (sameState)//Stops the current animation from interrupting itself.
+        
+        
+        if (currentAnimState == newState)//Stops the current animation from interrupting itself.
         {
             return;
         }
-       
-        animator.Play(newState);
+        animator.CrossFade(newState, transitionDuration);
+        //animator.Play(newState);
         currentAnimState = newState;
     }
 }

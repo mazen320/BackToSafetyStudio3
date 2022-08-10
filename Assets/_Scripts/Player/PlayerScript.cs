@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
     [Header("Player Movement")]
     public float playerSpeed = 1.8f;
     public float playerSprint = 3f;
-   
+
     [Header("Player Camera")]
     public Transform playerCamera;
 
@@ -32,7 +32,7 @@ public class PlayerScript : MonoBehaviour
     //Animations when there is no aiming down sights.
     const string walk = "Walk";
     const string running = "Running";
- 
+
     public float timeOfLastFunctionCall;
     public float interval = 5;
 
@@ -57,7 +57,7 @@ public class PlayerScript : MonoBehaviour
     }
     void Update()
     {
-      
+
         isGrounded = Physics.CheckSphere(grounded.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
@@ -71,7 +71,7 @@ public class PlayerScript : MonoBehaviour
         //Jump();
         Sprint();//Done.
     }
-   
+
     void playerMovement()
     {
         float horizontal_axis = Input.GetAxisRaw("Horizontal");
@@ -81,7 +81,7 @@ public class PlayerScript : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
-            if (!Input.GetKey(KeyCode.LeftShift))
+            if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetButton("Fire2"))
             {
                 playerAnimator.isWalking = true;
 
@@ -121,26 +121,35 @@ public class PlayerScript : MonoBehaviour
     }
 
     void Sprint()   //same thing from playermove just changed one variable to playersprint
-    {
+    {/*
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {*/
+        //playerAnimator.isRunning = true;
+        float horizontal_axis = Input.GetAxisRaw("Horizontal");
+        float vertical_axis = Input.GetAxisRaw("Vertical");
+
+        Vector3 direction = new Vector3(horizontal_axis, 0f, vertical_axis).normalized;
+
+        if (direction.magnitude >= 0.1f)
         {
-            playerAnimator.isRunning = true;
-            float horizontal_axis = Input.GetAxisRaw("Horizontal");
-            float vertical_axis = Input.GetAxisRaw("Vertical");
-
-            Vector3 direction = new Vector3(horizontal_axis, 0f, vertical_axis).normalized;
-
-            if (direction.magnitude >= 0.1f)
+            if (Input.GetKey(KeyCode.LeftShift) && !Input.GetButton("Fire2"))
             {
+                playerAnimator.isRunning = true;
 
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.eulerAngles.y; //we use the y angle for the camera so its left and right rather than up and down 
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-                Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                cC.Move(moveDirection.normalized * playerSprint * Time.deltaTime);
             }
+            else
+            {
+                playerAnimator.isRunning = false;
+            }
+
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.eulerAngles.y; //we use the y angle for the camera so its left and right rather than up and down 
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            cC.Move(moveDirection.normalized * playerSprint * Time.deltaTime);
         }
+        //}
         else
         {
             playerAnimator.isRunning = false;

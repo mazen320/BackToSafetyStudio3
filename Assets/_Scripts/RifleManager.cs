@@ -14,7 +14,7 @@ public class RifleManager : MonoBehaviour
     public PlayerScript playerScript;
     public Transform hand;
     Vector3 worldAimTarget;
-   
+
 
     [Header("Rifle shooting and ammunitition")]
     public int shotsLeft;
@@ -22,15 +22,15 @@ public class RifleManager : MonoBehaviour
     public int reservesLeft;
     public int maxReserves = 50;
     public int ammoRefil;//Amount of ammo you get when picking up an ammo box.
-   
-  
+
+
     public float reloadTime = 1.3f;
     private bool isReloading = false;
     private WeaponUIManager weaponUIManager;
 
     [Header("Animation Control")]
     public Animator anim;
-
+    public AnimationClip reloadAnimation;
     const string idle = "Idle";
     const string shooting = "Shooting";
     const string shootWalkForward = "ShootWalkForward";
@@ -81,14 +81,15 @@ public class RifleManager : MonoBehaviour
             StartCoroutine(Reload());
             return;
         }
-        if (Input.GetKey(KeyCode.R) && shotsLeft < magazineSize)
+        if (Input.GetKeyDown(KeyCode.R) && shotsLeft < magazineSize)
         {
+            print(shotsLeft);
             StartCoroutine(Reload());
             return;
         }
 
         ShotHandler();
-       
+
     }
     public void ReadInputs()
     {
@@ -108,7 +109,7 @@ public class RifleManager : MonoBehaviour
         {
             playerAnimator.shootingAndWalkingForwards = false;
         }
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire2") && Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
         {
             playerAnimator.aiming = true;
         }
@@ -116,7 +117,7 @@ public class RifleManager : MonoBehaviour
         {
             playerAnimator.aiming = false;
         }
-        
+
         if (Input.GetButton("Fire2") && Input.GetButton("Fire1"))
         {
             playerAnimator.aimingAndShooting = true;
@@ -129,7 +130,7 @@ public class RifleManager : MonoBehaviour
 
     private void ReadMovementInputs()
     {
-        if (Input.GetButton("Fire2") && Input.GetKey(KeyCode.W) /*|| Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)*/)
+        if (Input.GetButton("Fire2") && Input.GetAxis("Vertical") > 0 /*|| Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)*/)
         {
             playerAnimator.aimingForwardStrafe = true;
         }
@@ -153,7 +154,7 @@ public class RifleManager : MonoBehaviour
         {
             playerAnimator.aimingLeftStrafe = false;
         }
-        if(Input.GetButton("Fire2") && Input.GetKey(KeyCode.D))
+        if (Input.GetButton("Fire2") && Input.GetKey(KeyCode.D))
         {
             playerAnimator.aimingRightStrafe = true;
         }
@@ -161,7 +162,7 @@ public class RifleManager : MonoBehaviour
         {
             playerAnimator.aimingRightStrafe = false;
         }
-       
+
 
     }
 
@@ -186,7 +187,7 @@ public class RifleManager : MonoBehaviour
             playerScript.transform.forward = Vector3.Lerp(playerScript.transform.forward, cam.transform.forward, rotationSpeed * Time.deltaTime);
         }
     }
-   
+
     private void Shoot()
     {
 
@@ -215,8 +216,8 @@ public class RifleManager : MonoBehaviour
     }
     IEnumerator Reload()
     {
-        
-       
+
+
         if (reservesLeft > 0)
         {
             playerScript.playerSpeed = 0f;
@@ -226,9 +227,15 @@ public class RifleManager : MonoBehaviour
             Debug.Log("Reloading");
 
             anim.SetBool("Reloading", true);
-            reload.PlayOneShot(reloadClip);//Sound Effect.
+            int reloadCount = 0;
+            if (reloadCount < 1)
+            {
+                reload.PlayOneShot(reloadClip);//Sound Effect.
+                //reloadCount++;
+            }
 
-            yield return new WaitForSeconds(reloadTime);
+            //yield return new WaitForSeconds(reloadTime);
+            yield return new WaitForSeconds(reloadAnimation.length / 2);
             playerAnimator.isReloading = false;
             //anim.SetBool("Reloading", false);
             //playerScript.ChangeAnimationState(reloading);
@@ -254,23 +261,23 @@ public class RifleManager : MonoBehaviour
             playerScript.playerSpeed = 1.9f;
             playerScript.playerSprint = 3;
             //isReloading = false;
-           
+
         }
 
 
     }
 
-    
 
-  /*  private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "AmmoPickup")
-        {
-            reservesLeft += ammoRefil;
-            weaponUIManager.UpdateReservesLeft(reservesLeft);
-            Debug.Log("Picked up ammo");
-            Destroy(other.gameObject, 1f);
-        }
-    }*/
+
+    /*  private void OnTriggerEnter(Collider other)
+      {
+          if (other.tag == "AmmoPickup")
+          {
+              reservesLeft += ammoRefil;
+              weaponUIManager.UpdateReservesLeft(reservesLeft);
+              Debug.Log("Picked up ammo");
+              Destroy(other.gameObject, 1f);
+          }
+      }*/
 
 }
