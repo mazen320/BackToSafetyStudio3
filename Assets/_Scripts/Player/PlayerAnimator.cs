@@ -11,6 +11,7 @@ public class PlayerAnimator : MonoBehaviour
     public Animator playerAnimator;
     public float transitionDuration;
 
+    public ZombieSpawner zombieSpawner;
     public Animator zombieAnimator;
 
     [Header("Player Boolean Checks")]
@@ -62,18 +63,26 @@ public class PlayerAnimator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerAnimator = this.GetComponent<Animator>();
+        zombieSpawner = Camera.main.GetComponent<ZombieSpawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayPlayerAnimations();
+        for (int i = 0; i < zombieSpawner.zombies.Count; i++)
+        {
+            if (zombieSpawner.zombies[i] != null)
+            {
+                zombieAnimator = zombieSpawner.zombies[i].GetComponent<Animator>();
+            }
+        }
         PlayZombieAnimations();
     }
     private void PlayPlayerAnimations()
     {
-         if (isReloading)
+        if (isReloading)
         {
             ChangePlayerAnimation(reloading);
         }
@@ -90,7 +99,7 @@ public class PlayerAnimator : MonoBehaviour
         {
             ChangePlayerAnimation(shooting);
         }
-       
+
         else if (shootingAndWalkingForwards)
         {
             ChangePlayerAnimation(shootWalkForward);
@@ -141,8 +150,8 @@ public class PlayerAnimator : MonoBehaviour
     }
     private void ChangePlayerAnimation(string newState)
     {
-        
-        
+
+
         if (currentAnimState == newState)//Stops the current animation from interrupting itself.
         {
             return;

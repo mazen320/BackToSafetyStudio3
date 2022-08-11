@@ -27,6 +27,7 @@ public class ZombieMovement : MonoBehaviour
     public float soundRepeatTimer;
 
     // Update is called once per frame
+   
     void Update()
     {
         CheckPlayerDistance();
