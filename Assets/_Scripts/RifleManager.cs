@@ -22,7 +22,7 @@ public class RifleManager : MonoBehaviour
     public int reservesLeft;
     public int maxReserves = 50;
     public int ammoRefil;//Amount of ammo you get when picking up an ammo box.
-
+    public bool coroutineRunning;
 
     public float reloadTime = 1.3f;
     private bool isReloading = false;
@@ -76,9 +76,10 @@ public class RifleManager : MonoBehaviour
         if (isReloading)
             return;
 
-        if (shotsLeft <= 0)
+        if (shotsLeft <= 0 && !coroutineRunning)
         {
             StartCoroutine(Reload());
+            Debug.Log("Repeat bruhhhhhhh");
             return;
         }
         if (Input.GetKeyDown(KeyCode.R) && shotsLeft < magazineSize)
@@ -216,7 +217,7 @@ public class RifleManager : MonoBehaviour
     }
     IEnumerator Reload()
     {
-
+        coroutineRunning = true;
 
         if (reservesLeft > 0)
         {
@@ -227,12 +228,12 @@ public class RifleManager : MonoBehaviour
             Debug.Log("Reloading");
 
             anim.SetBool("Reloading", true);
-            int reloadCount = 0;
-            if (reloadCount < 1)
-            {
-                reload.PlayOneShot(reloadClip);//Sound Effect.
-                //reloadCount++;
-            }
+            /*  int reloadCount = 0;
+              if (reloadCount < 1)
+              {*/
+            reload.PlayOneShot(reloadClip);//Sound Effect.
+                                           //reloadCount++;
+                                           //}
 
             //yield return new WaitForSeconds(reloadTime);
             yield return new WaitForSeconds(reloadAnimation.length / 2);
@@ -261,6 +262,7 @@ public class RifleManager : MonoBehaviour
             playerScript.playerSpeed = 1.9f;
             playerScript.playerSprint = 3;
             //isReloading = false;
+            coroutineRunning = false;
 
         }
 

@@ -49,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
         currentRegenTimer -= Time.deltaTime;
         CheckRegenTimer();
         //RegenerateHealth(regenRate);
-        Debug.Log("Player health is " + currentHealth);
+        //Debug.Log("Player health is " + currentHealth);
         healthBarManager.playerHealthSlider.value = currentHealth;
     }
 

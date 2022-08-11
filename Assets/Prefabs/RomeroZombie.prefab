@@ -521,13 +521,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a79dc89ed706c3c4883ed4eef272f180, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.035
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 205
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1190,7 +1190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   zombieMovement: {fileID: 2437154918820703053}
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 2816597696097103324, guid: ab81c70944e4c9042b30948f3290da5e, type: 3}
   melee: {fileID: 2437154918633725016}
   meleeClip: {fileID: 8300000, guid: 0f937a5e02e1d3146964b80de6581538, type: 3}
 --- !u!114 &2437154918820703053
@@ -1205,8 +1205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8c285c36a7e0045947f0ca8e377d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 2816597696097103327, guid: ab81c70944e4c9042b30948f3290da5e, type: 3}
   anim: {fileID: 8122267035524130289}
+  playerAnimator: {fileID: 3867561738187561639, guid: ab81c70944e4c9042b30948f3290da5e, type: 3}
   runningSpeed: 5
   chaseRange: 6
   attackingSpeed: 0
@@ -1232,7 +1233,10 @@ MonoBehaviour:
   zombieUIHealthManager: {fileID: 0}
   damageText: {fileID: 5959923637894835053, guid: 2171caea512460e4f8535b8996bd280b, type: 3}
   maxHealth: 50
+  deathAnimationClip: {fileID: 7400000, guid: e7ffb640e77ea6e44a2a28c62bfd21e2, type: 2}
+  currentDeathTimer: 0
   spawnOffset: {x: 0, y: 1, z: 0}
+  playerAnimator: {fileID: 3867561738187561639, guid: ab81c70944e4c9042b30948f3290da5e, type: 3}
 --- !u!114 &289948821
 MonoBehaviour:
   m_ObjectHideFlags: 0

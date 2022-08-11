@@ -101,7 +101,7 @@ public class PlayerScript : MonoBehaviour
         else
         {
             playerAnimator.isWalking = false;
-            Debug.Log("You stopped");
+            //Debug.Log("You stopped");
         }
     }
 

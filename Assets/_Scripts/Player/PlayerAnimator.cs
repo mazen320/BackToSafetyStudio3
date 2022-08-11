@@ -8,10 +8,13 @@ public class PlayerAnimator : MonoBehaviour
     /// This class will control all animation transitions for the player and for the zombies. It will be the ONLY class that changes animations, so that no class overrides another.
     /// It is simply the bools required for a specific animation to play that will be set from their respective classes. This class checks if those bools are true or false...
     /// </summary>
-    public Animator animator;
+    public Animator playerAnimator;
     public float transitionDuration;
 
-    [Header("Boolean Checks")]
+    public ZombieSpawner zombieSpawner;
+    public Animator zombieAnimator;
+
+    [Header("Player Boolean Checks")]
     public bool isWalking;
     //public bool isSprinting;
 
@@ -29,7 +32,12 @@ public class PlayerAnimator : MonoBehaviour
 
     public bool isReloading;
 
-    [Header("Animation Names")]
+    [Header("Zombie Boolean Checks")]
+    public bool inAttackRange;
+    public bool inChaseRange;
+    public bool zombieDied;
+
+    [Header("Player Animation Names")]
     public string currentAnimState;
 
     const string idle = "Idle";
@@ -47,83 +55,120 @@ public class PlayerAnimator : MonoBehaviour
     const string strafeRight = "StrafeRight";
 
     const string reloading = "Reloading";
+
+    [Header("Zombie Animation Names")]
+    const string attacking = "Attack";
+    const string chasing = "Chasing";
+    const string dying = "Falling Back Death";
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerAnimator = this.GetComponent<Animator>();
+        zombieSpawner = Camera.main.GetComponent<ZombieSpawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayPlayerAnimations();
+        for (int i = 0; i < zombieSpawner.zombies.Count; i++)
+        {
+            if (zombieSpawner.zombies[i] != null)
+            {
+                zombieAnimator = zombieSpawner.zombies[i].GetComponent<Animator>();
+            }
+        }
+        PlayZombieAnimations();
     }
     private void PlayPlayerAnimations()
     {
-         if (isReloading)
+        if (isReloading)
         {
-            ChangeAnimationState(reloading);
+            ChangePlayerAnimation(reloading);
         }
         else if (isWalking)
         {
-            ChangeAnimationState(walking);
+            ChangePlayerAnimation(walking);
         }
         else if (isRunning)
         {
             print(isRunning);
-            ChangeAnimationState(running);
+            ChangePlayerAnimation(running);
         }
         else if (shouldShoot)
         {
-            ChangeAnimationState(shooting);
+            ChangePlayerAnimation(shooting);
         }
-       
+
         else if (shootingAndWalkingForwards)
         {
-            ChangeAnimationState(shootWalkForward);
+            ChangePlayerAnimation(shootWalkForward);
         }
         else if (aiming)
         {
-            ChangeAnimationState(idleAim);
+            ChangePlayerAnimation(idleAim);
         }
         else if (aimingAndShooting)
         {
-            ChangeAnimationState(aimIdleShoot);
+            ChangePlayerAnimation(aimIdleShoot);
         }
         else if (aimingForwardStrafe)
         {
-            ChangeAnimationState(aimForwardWalk);
+            ChangePlayerAnimation(aimForwardWalk);
         }
         else if (aimingBackwardStrafe)
         {
-            ChangeAnimationState(aimBackwardWalk);
+            ChangePlayerAnimation(aimBackwardWalk);
         }
         else if (aimingLeftStrafe)
         {
-            ChangeAnimationState(strafeLeft);
+            ChangePlayerAnimation(strafeLeft);
         }
         else if (aimingRightStrafe)
         {
-            ChangeAnimationState(strafeRight);
+            ChangePlayerAnimation(strafeRight);
         }
         else
         {
-            ChangeAnimationState(idle);
+            ChangePlayerAnimation(idle);
         }
     }
     private void PlayZombieAnimations()
     {
-
+        if (inAttackRange)
+        {
+            ChangeZombieAnimation(attacking);
+        }
+        else if (inChaseRange)
+        {
+            ChangeZombieAnimation(chasing);
+        }
+        else if (zombieDied)
+        {
+            ChangeZombieAnimation(dying);
+        }
     }
-    private void ChangeAnimationState(string newState)
+    private void ChangePlayerAnimation(string newState)
     {
-        
-        
+
+
         if (currentAnimState == newState)//Stops the current animation from interrupting itself.
         {
             return;
         }
-        animator.CrossFade(newState, transitionDuration);
+        playerAnimator.CrossFade(newState, transitionDuration);
+        //animator.Play(newState);
+        currentAnimState = newState;
+    }
+    private void ChangeZombieAnimation(string newState)
+    {
+
+
+        if (currentAnimState == newState)//Stops the current animation from interrupting itself.
+        {
+            return;
+        }
+        zombieAnimator.CrossFade(newState, transitionDuration);
         //animator.Play(newState);
         currentAnimState = newState;
     }
