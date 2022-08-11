@@ -17,6 +17,7 @@ public class Interactor : MonoBehaviour
     private IInteractable _interactable;
     //public Dialogue dialogue;
     [Header("DisablingOtherScripts")]
+    public GameObject weopon;
     public PlayerScript playerScript;
     public RifleManager rifleManager;
     public SwitchCamera switchCamera;
@@ -55,13 +56,13 @@ public class Interactor : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     interactionPromptUI.ClosePanel();
-                    _interactable.DisablePlayerMovement(playerScript, rifleManager, switchCamera);
+                    _interactable.DisablePlayerMovement(playerScript, rifleManager, switchCamera, weopon);
                     _interactable.Interact(this);//That specific NPC will do what it's programmed to do.
                     _interactable.StopInteraction(this);
                 }
                 if (Input.GetMouseButtonDown(0))
                 {
-                    _interactable.EnablePlayerMovement(playerScript, rifleManager, switchCamera);
+                    _interactable.EnablePlayerMovement(playerScript, rifleManager, switchCamera, weopon);
                 }
             }
            

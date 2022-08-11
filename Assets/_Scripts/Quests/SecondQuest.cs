@@ -7,7 +7,7 @@ public class SecondQuest : QuestState
 
     public override void UpdateState(QuestManager questManager)
     {
-        if (questManager.player.pickedAmmo == true)
+        if (questManager.playerScript.pickedAmmo == true)
         {
             questManager.objective2 = true;
             questManager.zombieSpawner.spawnZombies = true;
@@ -19,7 +19,5 @@ public class SecondQuest : QuestState
             Debug.Log("Quest3 is ongoing");
         }
     }
-
-
 
 }
