@@ -237,11 +237,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648f97ea20b15814fbc249acc553d769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerRifle: {fileID: 0}
+  PlayerRifle: {fileID: 100002, guid: 75dcb58506746b84db987c4ce01e99b5, type: 3}
   PickupRifle: {fileID: 5064255173046248773}
   playerPunch: {fileID: 0}
   player: {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 5064255173053535879}
   punchCharge: 15
 --- !u!1 &5064255173046248777
 GameObject:
