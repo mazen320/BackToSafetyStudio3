@@ -187,6 +187,7 @@ public class RifleManager : MonoBehaviour
         }
     }
    
+
     private void Shoot()
     {
 
