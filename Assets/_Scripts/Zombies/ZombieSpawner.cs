@@ -33,14 +33,14 @@ public class ZombieSpawner : MonoBehaviour
             }
             
         }
-        if (spawnZombies)
+        /*if (spawnZombies)
         {
             spawnTimer -= Time.deltaTime;
             if(spawnTimer == 0)
             {
                 spawnZombies = false;
             }
-        }
+        }*/
     }
     public void CheckZombieHealth(GameObject zombie)
     {
@@ -58,9 +58,9 @@ public class ZombieSpawner : MonoBehaviour
     IEnumerator SpawnZombie()
     {
 
-        if (questManager.objective2 && spawnZombies)
-        {
-            spawnTimer = 10;
+       /* if (questManager.objective2 && spawnZombies)
+        {*/
+            //spawnTimer = 3;
 
             while (enemyCount < enemyLimit)
             {
@@ -80,7 +80,7 @@ public class ZombieSpawner : MonoBehaviour
             {
                 //Debug.Log("You have spawned max enemies");
             }
-        }   
+        //}   
        
     }
 }

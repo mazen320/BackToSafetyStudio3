@@ -7,6 +7,8 @@ public class ZombieMovement : MonoBehaviour
     public Transform player;
     public Animator anim;
 
+    public PlayerAnimator playerAnimator; 
+
     [Header("Running")]
     public float runningSpeed;
     public float chaseRange;
@@ -25,6 +27,7 @@ public class ZombieMovement : MonoBehaviour
     public float soundRepeatTimer;
 
     // Update is called once per frame
+   
     void Update()
     {
         CheckPlayerDistance();
@@ -33,31 +36,39 @@ public class ZombieMovement : MonoBehaviour
         soundRepeatTimer += Time.deltaTime;
         if (inChaseRange && !inAttackRange)
         {
-            anim.SetBool("inChaseRange", true);
+            playerAnimator.inChaseRange = true;
+            //anim.SetBool("inChaseRange", true);
             //PlayFootStepSound();
         }
         else
         {
-            anim.SetBool("inChaseRange", false);
+            playerAnimator.inChaseRange = false;
+            //anim.SetBool("inChaseRange", false);
         }
 
         if (inAttackRange)
         {
-            anim.SetBool("inAttackRange", true);
-            anim.SetBool("inChaseRange", false);
+            playerAnimator.inAttackRange = true;
+            playerAnimator.inChaseRange = false;
+            //anim.SetBool("inAttackRange", true);
+            //anim.SetBool("inChaseRange", false);
             //AttackPlayer();
         }
         else
         {
-            anim.SetBool("inAttackRange", false);
-            anim.SetBool("inChaseRange", true);
+            playerAnimator.inAttackRange = false;
+            playerAnimator.inChaseRange = true;
+            //anim.SetBool("inAttackRange", false);
+            //anim.SetBool("inChaseRange", true);
             //ChasePlayer(); //It would seem this kind of movement does not work on a terrain I need to get familiar with terrains.
 
         }
         if (!inAttackRange && !inChaseRange)
         {
-            anim.SetBool("inAttackRange", false);
-            anim.SetBool("inChaseRange", false);
+            playerAnimator.inAttackRange = false;
+            playerAnimator.inChaseRange = false;
+            /*  anim.SetBool("inAttackRange", false);
+            anim.SetBool("inChaseRange", false);*/
         }
         
         /*  if(inChaseRange && !inAttackRange)
