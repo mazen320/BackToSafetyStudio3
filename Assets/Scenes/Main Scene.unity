@@ -4248,6 +4248,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7615220583014043773, guid: 3dca833f14577fc46870b3ffe4a313ea, type: 3}
   m_PrefabInstance: {fileID: 8913161991002613602}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &633961827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 633961828}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &633961828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633961827}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -175.91739, y: 6.985731, z: -94.77099}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 879350149}
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &634156487 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1381132681371883810, guid: f544a2a9fed71534f85ea81385e80b16, type: 3}
@@ -5507,6 +5539,103 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1381132681371883810, guid: f544a2a9fed71534f85ea81385e80b16, type: 3}
   m_PrefabInstance: {fileID: 8913161991148896899}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &879350145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 879350149}
+  - component: {fileID: 879350148}
+  - component: {fileID: 879350147}
+  - component: {fileID: 879350146}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &879350146
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879350145}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &879350147
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879350145}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &879350148
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879350145}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &879350149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879350145}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.547394, y: -6.735731, z: -6.8990097}
+  m_LocalScale: {x: 1, y: 1, z: 10.984}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 633961828}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &882809712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1381132681371883810, guid: f544a2a9fed71534f85ea81385e80b16, type: 3}
@@ -8216,8 +8345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c42164aa115d349921fedc2e846de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DrawGizmos: 0
-  obstacleHolder: {fileID: 5313130361974976907}
+  DrawGizmos: 1
+  obstacleHolder: {fileID: 633961828}
   MinSize: {x: -275, y: -275}
   MaxSize: {x: 0, y: 0}
   NodeSize: 1
@@ -17087,7 +17216,7 @@ PrefabInstance:
       objectReference: {fileID: 1429848542}
     - target: {fileID: 289948821, guid: 5fb922cf402925249b126151b4854132, type: 3}
       propertyPath: Speed
-      value: 1
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 289948821, guid: 5fb922cf402925249b126151b4854132, type: 3}
       propertyPath: Objective
@@ -17127,11 +17256,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2763022148606508939, guid: 5fb922cf402925249b126151b4854132, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.9015393
+      value: -4.112
       objectReference: {fileID: 0}
     - target: {fileID: 2763022148606508939, guid: 5fb922cf402925249b126151b4854132, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.586731
+      value: 12.814
       objectReference: {fileID: 0}
     - target: {fileID: 2763022148606508939, guid: 5fb922cf402925249b126151b4854132, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17176,6 +17305,10 @@ PrefabInstance:
     - target: {fileID: 5845526281171823610, guid: 5fb922cf402925249b126151b4854132, type: 3}
       propertyPath: m_Constraints
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845526281171823610, guid: 5fb922cf402925249b126151b4854132, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fb922cf402925249b126151b4854132, type: 3}
@@ -17677,7 +17810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -87.45007, y: -265.95462}
+  m_AnchoredPosition: {x: -87.44995, y: -265.9546}
   m_SizeDelta: {x: -3434.397, y: -1244.271}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3973840438219741711
@@ -18114,7 +18247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -87.45007, y: 134.04541}
+  m_AnchoredPosition: {x: -87.44995, y: 134.04541}
   m_SizeDelta: {x: -3434.397, y: -1244.271}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3973840439843054993
@@ -18364,7 +18497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -87.45007, y: -65.95459}
+  m_AnchoredPosition: {x: -87.44995, y: -65.95459}
   m_SizeDelta: {x: -3434.397, y: -1244.271}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4052434137143155104
@@ -23528,6 +23661,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuburbanHouseVer3A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8650238013510914333, guid: 914761b82962bf0468c45833469bb498, type: 3}
+      propertyPath: m_TagString
+      value: Object
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 914761b82962bf0468c45833469bb498, type: 3}
 --- !u!1001 &8913161989594163534
@@ -27959,6 +28096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuburbanHouseVer2
       objectReference: {fileID: 0}
+    - target: {fileID: 1893486744694029556, guid: fe44196c5e4e1444db4df3069ca7c43e, type: 3}
+      propertyPath: m_TagString
+      value: Object
+      objectReference: {fileID: 0}
     - target: {fileID: 1893486744694029563, guid: fe44196c5e4e1444db4df3069ca7c43e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -29168,6 +29309,10 @@ PrefabInstance:
     - target: {fileID: 1760531803293426, guid: 38578129bfa01a24e8383820c8fb1613, type: 3}
       propertyPath: m_Name
       value: Police Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760531803293426, guid: 38578129bfa01a24e8383820c8fb1613, type: 3}
+      propertyPath: m_TagString
+      value: Object
       objectReference: {fileID: 0}
     - target: {fileID: 4052187596568984, guid: 38578129bfa01a24e8383820c8fb1613, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30609,6 +30754,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuburbanHouseVer3A
       objectReference: {fileID: 0}
+    - target: {fileID: 8650238013510914333, guid: 914761b82962bf0468c45833469bb498, type: 3}
+      propertyPath: m_TagString
+      value: Object
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 914761b82962bf0468c45833469bb498, type: 3}
 --- !u!65 &8913161989827246624
@@ -31571,6 +31720,10 @@ PrefabInstance:
     - target: {fileID: 5916560402595816505, guid: e57a10b1c9016b742a3084e52be77b80, type: 3}
       propertyPath: m_Name
       value: SuburbanHouseVer3B
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916560402595816505, guid: e57a10b1c9016b742a3084e52be77b80, type: 3}
+      propertyPath: m_TagString
+      value: Object
       objectReference: {fileID: 0}
     - target: {fileID: 7147835218200755565, guid: e57a10b1c9016b742a3084e52be77b80, type: 3}
       propertyPath: m_RootOrder
@@ -39197,7 +39350,7 @@ GameObject:
   - component: {fileID: 8913161990073143864}
   m_Layer: 0
   m_Name: CHURCH
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44215,7 +44368,7 @@ GameObject:
   - component: {fileID: 8913161990221385877}
   m_Layer: 0
   m_Name: STORAGE YARD and SHOP
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47919,6 +48072,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuburbanHouseVer2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1893486744694029556, guid: fe44196c5e4e1444db4df3069ca7c43e, type: 3}
+      propertyPath: m_TagString
+      value: Object
+      objectReference: {fileID: 0}
     - target: {fileID: 1893486744694029563, guid: fe44196c5e4e1444db4df3069ca7c43e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -48312,7 +48469,7 @@ GameObject:
   - component: {fileID: 8913161990351489182}
   m_Layer: 0
   m_Name: Graveyard
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58861,7 +59018,7 @@ GameObject:
   - component: {fileID: 8913161990676404167}
   m_Layer: 0
   m_Name: HOUSES
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59875,7 +60032,7 @@ GameObject:
   - component: {fileID: 8913161990695195511}
   m_Layer: 0
   m_Name: ALL NEW ROADS
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65565,6 +65722,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuburbanHouseVer1
       objectReference: {fileID: 0}
+    - target: {fileID: 2717404122144484978, guid: d18575db84348924490b1cafa3686243, type: 3}
+      propertyPath: m_TagString
+      value: Object
+      objectReference: {fileID: 0}
     - target: {fileID: 2717404122144484979, guid: d18575db84348924490b1cafa3686243, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -67192,6 +67353,10 @@ PrefabInstance:
     - target: {fileID: 5916560402595816505, guid: e57a10b1c9016b742a3084e52be77b80, type: 3}
       propertyPath: m_Name
       value: SuburbanHouseVer3B (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916560402595816505, guid: e57a10b1c9016b742a3084e52be77b80, type: 3}
+      propertyPath: m_TagString
+      value: Object
       objectReference: {fileID: 0}
     - target: {fileID: 7147835218200755565, guid: e57a10b1c9016b742a3084e52be77b80, type: 3}
       propertyPath: m_RootOrder
@@ -70952,6 +71117,10 @@ PrefabInstance:
     - target: {fileID: 2717404122144484978, guid: d18575db84348924490b1cafa3686243, type: 3}
       propertyPath: m_Name
       value: SuburbanHouseVer1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717404122144484978, guid: d18575db84348924490b1cafa3686243, type: 3}
+      propertyPath: m_TagString
+      value: Object
       objectReference: {fileID: 0}
     - target: {fileID: 2717404122144484979, guid: d18575db84348924490b1cafa3686243, type: 3}
       propertyPath: m_RootOrder
@@ -79101,7 +79270,7 @@ GameObject:
   - component: {fileID: 8913161991290332120}
   m_Layer: 0
   m_Name: ROAD CLOSURES
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81246,7 +81415,7 @@ GameObject:
   - component: {fileID: 8913161991335218570}
   m_Layer: 0
   m_Name: House Fence
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84968,7 +85137,7 @@ GameObject:
   - component: {fileID: 8913161991432440972}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
