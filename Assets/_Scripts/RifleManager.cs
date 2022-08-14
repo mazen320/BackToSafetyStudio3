@@ -174,7 +174,7 @@ public class RifleManager : MonoBehaviour
             nextTimeToShoot = Time.time + 1f / fireCharge;
             Shoot();
         }
-        else if (playerAnimator.shootingAndWalkingForwards)
+        if (playerAnimator.shootingAndWalkingForwards)
         {
             playerScript.playerSpeed = 0.5f;
         }

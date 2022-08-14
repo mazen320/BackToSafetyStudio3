@@ -121,35 +121,36 @@ public class PlayerScript : MonoBehaviour
     }
 
     void Sprint()   //same thing from playermove just changed one variable to playersprint
-    {/*
+    {
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-        {*/
+        {
         //playerAnimator.isRunning = true;
         float horizontal_axis = Input.GetAxisRaw("Horizontal");
         float vertical_axis = Input.GetAxisRaw("Vertical");
 
         Vector3 direction = new Vector3(horizontal_axis, 0f, vertical_axis).normalized;
 
-        if (direction.magnitude >= 0.1f)
-        {
-            if (Input.GetKey(KeyCode.LeftShift) && !Input.GetButton("Fire2"))
+            if (direction.magnitude >= 0.1f)
             {
-                playerAnimator.isRunning = true;
+                if (Input.GetKey(KeyCode.LeftShift) && !Input.GetButton("Fire2"))
+                {
+                    playerAnimator.isRunning = true;
 
+                }
+                else
+                {
+                    playerAnimator.isRunning = false;
+                }
+
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.eulerAngles.y; //we use the y angle for the camera so its left and right rather than up and down 
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                cC.Move(moveDirection.normalized * playerSprint * Time.deltaTime);
             }
-            else
-            {
-                playerAnimator.isRunning = false;
-            }
-
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.eulerAngles.y; //we use the y angle for the camera so its left and right rather than up and down 
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            cC.Move(moveDirection.normalized * playerSprint * Time.deltaTime);
         }
-        //}
+        
         else
         {
             playerAnimator.isRunning = false;

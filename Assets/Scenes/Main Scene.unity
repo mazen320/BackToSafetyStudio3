@@ -2389,7 +2389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 2
-  playerSprint: 3
+  playerSprint: 4
   playerCamera: {fileID: 806483026}
   cC: {fileID: 387760817}
   gravity: -9.81
@@ -2407,6 +2407,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 131072
+  Gun: {fileID: 1523919611}
   playerAnimator: {fileID: 387760823}
   rifleManager: {fileID: 1860286572}
   weaponUIManager: {fileID: 176366851}
