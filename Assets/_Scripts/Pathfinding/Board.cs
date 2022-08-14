@@ -93,7 +93,7 @@ public class Board : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(tileLogic.WorldPosition, NodeSize);  //summons an invisible sphere and check if its colliding with anything
         foreach(Collider col in colliders)
         {
-            if (col.transform.parent == obstacleHolder)
+            if (col.transform.CompareTag("Object"))
             {
 //                Debug.Log("Obstacle at " + tileLogic.WorldPosition);
                 tileLogic.MoveCost = int.MaxValue;
