@@ -37,6 +37,10 @@ public class PlayerScript : MonoBehaviour
     public float interval = 5;
 
 
+
+    
+
+
     public AudioSource footStep;
     public AudioClip footStepClip;
 

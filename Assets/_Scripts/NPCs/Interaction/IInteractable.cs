@@ -7,17 +7,31 @@ public interface IInteractable
     
     public string interactionPrompt { get; }
     
-    public void DisablePlayerMovement(PlayerScript playerScript, RifleManager playersRifle, SwitchCamera playersCamera)
+    public void DisablePlayerMovement(PlayerScript playerScript, RifleManager playersRifle, SwitchCamera playersCamera, GameObject weopon)
     {
-        playerScript.enabled = false;
-        playersRifle.enabled = false;
-        playersCamera.enabled = false;
+        if (!weopon.activeInHierarchy)
+        {
+            playerScript.enabled = false;
+        }
+        else
+        {
+            playerScript.enabled = false;
+            playersRifle.enabled = false;
+            playersCamera.enabled = false;
+        }
     }
-    public void EnablePlayerMovement(PlayerScript playerScript, RifleManager playersRifle, SwitchCamera playersCamera)
+    public void EnablePlayerMovement(PlayerScript playerScript, RifleManager playersRifle, SwitchCamera playersCamera, GameObject weopon)
     {
-        playerScript.enabled = true;
-        playersRifle.enabled = true;
-        playersCamera.enabled = true;
+        if (!weopon.activeInHierarchy)
+        {
+            playerScript.enabled = true;
+        }
+        else
+        {
+            playerScript.enabled = true;
+            playersRifle.enabled = true;
+            playersCamera.enabled = true;
+        }
     }
     public bool Interact(Interactor interactor);
 
