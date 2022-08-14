@@ -8,9 +8,9 @@ public class Menus : MonoBehaviour
     [Header("All Menus")]
     public GameObject pauseMenuUI;
     public GameObject EndGameMenuUI;
-    public GameObject ObjectiveMenuUI;
+    public GameObject canvasParent;
 
-    public static bool GameisStopped = false;
+    private bool GameisStopped = false;
 
     void Update()
     {
@@ -19,58 +19,33 @@ public class Menus : MonoBehaviour
             if (GameisStopped)
             {
                 Resume();
+                canvasParent.SetActive(true);
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
             else
             {
                 Pause();
+               canvasParent.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
-        else if (Input.GetKeyDown("m"))
-        {
-            if (GameisStopped)
-            {
-                removeObjectives();
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            else
-            {
-                ShowObjectives();
-                Cursor.lockState = CursorLockMode.None;
-            }
-        }
-    }
-
-    public void ShowObjectives()
-    {
-        ObjectiveMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameisStopped = true;
-    }
-
-    public void removeObjectives()
-    {
-        ObjectiveMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
-        GameisStopped = false;
     }
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
         GameisStopped = false;
     }
     public void Restart()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu 1");
     }
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu 1");
     }
     public void Quit()
     {
