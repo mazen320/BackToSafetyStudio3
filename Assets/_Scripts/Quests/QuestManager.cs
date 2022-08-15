@@ -21,7 +21,13 @@ public class QuestManager : MonoBehaviour
     public float range = 2f;
     public GameObject phone;
     public GameObject player;
+    public GameObject gunShop;
     public GameObject house;
+    public GameObject church;
+    public GameObject storageYard;
+
+
+
 
     public bool objective1;
     public bool objective2;
@@ -44,6 +50,10 @@ public class QuestManager : MonoBehaviour
     void Start()
     {
         phone = GameObject.Find("Phone");
+        gunShop = GameObject.Find("GunShop");
+        house = GameObject.Find("HouseObj");
+        church = GameObject.Find("ChurchObj");
+        storageYard = GameObject.Find("StorageYardObj");
         currentState = firstQuest;
 
     }
