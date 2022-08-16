@@ -88,7 +88,7 @@ public class VehicleController : MonoBehaviour
         BackRightCollider.motorTorque = currentAcceleration;
         BackLeftCollider.motorTorque = currentAcceleration;         //all wheel drive cause of the mountainay terrain.
 
-        currentAcceleration = accelerationForce * -Input.GetAxis("Vertical"); // vertical as forward
+        currentAcceleration = accelerationForce * Input.GetAxis("Vertical"); // vertical as forward
     }
 
     void VehicleSteering()
