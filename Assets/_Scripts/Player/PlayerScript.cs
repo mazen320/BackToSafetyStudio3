@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     [Header("Player Movement")]
     public float playerSpeed = 1.8f;
-    public float playerSprint = 3f;
+    public float playerSprint = 7f;
 
     [Header("Player Camera")]
     public Transform playerCamera;

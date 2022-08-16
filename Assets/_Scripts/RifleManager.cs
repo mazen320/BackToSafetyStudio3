@@ -260,7 +260,7 @@ public class RifleManager : MonoBehaviour
             weaponUIManager.UpdateShotsLeft(shotsLeft);
             weaponUIManager.UpdateReservesLeft(reservesLeft);//Displays ammo left in the reserves.
             playerScript.playerSpeed = 1.9f;
-            playerScript.playerSprint = 3;
+            playerScript.playerSprint = 7;
             //isReloading = false;
             coroutineRunning = false;
 
