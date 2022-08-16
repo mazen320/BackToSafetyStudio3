@@ -16,6 +16,8 @@ public class AgentAStar : MonoBehaviour
     Rigidbody rb;
     int currentWaypoint;
 
+    bool shouldMove = false;
+
     /*      UNITY EVENTS
     */
     void Awake()
@@ -29,8 +31,17 @@ public class AgentAStar : MonoBehaviour
         {
             return;
         }
-        Move();
-        CheckWaypoint();
+
+        if (Vector3.Distance(rb.position, Objective.position) > 1)
+        {
+            Move();
+            CheckWaypoint();
+        }
+        else
+        {
+            return;
+        }
+
     }
 
     /*      METHODS
@@ -52,8 +63,15 @@ public class AgentAStar : MonoBehaviour
     }
     void Move()
     {
-        Vector3 targetDirection = path[currentWaypoint].WorldPosition - rb.position;
-        rb.MovePosition(rb.position + (targetDirection* Time.fixedDeltaTime * Speed));
+        //Vector3 targetDirection = path[currentWaypoint].WorldPosition - rb.position;
+        Vector3 targetDirection = new Vector3(path[currentWaypoint].WorldPosition.x, 0, path[currentWaypoint].WorldPosition.z) - rb.position;
+        //rb.AddForce(rb.position + (targetDirection* Time.fixedDeltaTime * Speed));
+        var velocity = rb.velocity;
+        velocity.x = targetDirection.x * Time.fixedDeltaTime * Speed;
+        velocity.z = targetDirection.z * Time.fixedDeltaTime * Speed;
+        rb.velocity = velocity;
+
+        //transform.LookAt(transform.position + rb.velocity);
     }
     void CheckWaypoint()
     {
