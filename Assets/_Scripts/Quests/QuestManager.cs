@@ -17,6 +17,7 @@ public class QuestManager : MonoBehaviour
 
     public RiflePickup riflePickup;
     public PlayerScript playerScript;
+    public VehicleController vehicleController;
     public bool callAnswered;
     public float range = 2f;
     public GameObject phone;
@@ -25,9 +26,11 @@ public class QuestManager : MonoBehaviour
     public GameObject house;
     public GameObject church;
     public GameObject storageYard;
+    public GameObject ammoBox;
 
+    public Waypoint wayPointTarget;
 
-
+    
 
     public bool objective1;
     public bool objective2;
@@ -49,7 +52,9 @@ public class QuestManager : MonoBehaviour
 
     void Start()
     {
+        vehicleController = vehicleController.GetComponent<VehicleController>();
         phone = GameObject.Find("Phone");
+        ammoBox = GameObject.Find("AmmoBoxObj");
         gunShop = GameObject.Find("GunShop");
         house = GameObject.Find("HouseObj");
         church = GameObject.Find("ChurchObj");
@@ -69,7 +74,7 @@ public class QuestManager : MonoBehaviour
     public void SwitchState(QuestState questState)
     {
         currentState = questState;
-      
+       
     }
 
 }

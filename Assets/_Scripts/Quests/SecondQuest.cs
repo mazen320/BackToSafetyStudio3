@@ -7,10 +7,10 @@ public class SecondQuest : QuestState
 
     public override void UpdateState(QuestManager questManager)
     {
+
         if (questManager.playerScript.pickedAmmo == true)
         {
             questManager.objective2 = true;
-            questManager.zombieSpawner.spawnZombies = true;
             Debug.Log("Quest2 is true");
         }
         if (questManager.objective2 == true)

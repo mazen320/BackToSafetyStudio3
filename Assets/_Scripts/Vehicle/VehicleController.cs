@@ -30,7 +30,7 @@ public class VehicleController : MonoBehaviour
     [Header("Vehicle Other")]
     public PlayerScript player;
     private float radius = 5f;
-    private bool isOpened = false;
+    public bool isOpened = false;
 
     [Header("Things to Disabled")]
     public GameObject AimCam;

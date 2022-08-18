@@ -6,11 +6,17 @@ public class ThirdQuest : QuestState
 {
     public override void UpdateState(QuestManager questManager)
     {
-        if (questManager.playerScript.pickedAmmo == true)
+         float dist = Vector3.Distance(questManager.gunShop.transform.position, questManager.player.transform.position);
+        if (dist < questManager.range)
         {
-            questManager.objective3 = true;
-            questManager.zombieSpawner.spawnZombies = true;
-            Debug.Log("Quest3 is true");
+            if (questManager.riflePickup.obj3 == true)
+            {
+                questManager.zombieSpawner.spawnZombies = true;
+                questManager.objective3 = true;
+                Debug.Log("Quest4 is trueeeeeeeeee");
+
+            }
+
         }
         if (questManager.objective3 == true)
         {

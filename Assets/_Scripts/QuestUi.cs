@@ -6,6 +6,18 @@ using TMPro;
 public class QuestUi : MonoBehaviour
 {
     public QuestManager QuestManager;
+    public Waypoint Waypoint;
+
+
+    public GameObject phone;
+    public GameObject npc1;
+    public GameObject ammoBox;
+    public GameObject gunShop;
+    public GameObject house;
+    public GameObject church;
+    public GameObject storageYard;
+    
+    ///////////////////////////////////
 
     public GameObject c_objective0;
     public GameObject c_objective1;
@@ -63,6 +75,7 @@ public class QuestUi : MonoBehaviour
     void Start()
     {
         QuestManager = Camera.main.GetComponent<QuestManager>();
+       
 
         objective1Text = c_objective1.GetComponent<TextMeshProUGUI>();
         objective2Text = c_objective2.GetComponent<TextMeshProUGUI>();
@@ -88,7 +101,7 @@ public class QuestUi : MonoBehaviour
         {
 
             Destroy(c_objective0);
-
+  
             objective1Text.text = objective_1;
 
 
@@ -96,8 +109,10 @@ public class QuestUi : MonoBehaviour
             {
 
                 Destroy(c_objective1);
+                
 
-                objective2Text.text = objective_2;
+
+               objective2Text.text = objective_2;
 
 
             }
@@ -106,8 +121,9 @@ public class QuestUi : MonoBehaviour
             {
 
                 Destroy(c_objective2);
+                
 
-                objective3Text.text = objective_3;
+               objective3Text.text = objective_3;
 
 
             }
@@ -116,8 +132,9 @@ public class QuestUi : MonoBehaviour
             {
 
                 Destroy(c_objective3);
+                
 
-                objective4Text.text = objective_4;
+               objective4Text.text = objective_4;
 
 
             }
