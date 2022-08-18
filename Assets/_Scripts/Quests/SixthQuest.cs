@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class SixthQuest : QuestState
 {
-    PriestNpc priestNpc;
+    
     public override void UpdateState(QuestManager questManager)
     {
-        if(questManager.objective6 == true)
+        
+        if (questManager.vehicleController.isOpened == true)
+        {
+            questManager.objective6 = true;
+        }
+
+        if (questManager.objective6 == true)
         {
 
         questManager.SwitchState(questManager.sevenQuest);

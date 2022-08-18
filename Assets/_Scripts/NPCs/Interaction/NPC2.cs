@@ -7,6 +7,7 @@ public class NPC2 : MonoBehaviour, IInteractable
     public GameObject dialogue;
     public GameObject lockedDialogue;
     public QuestManager obj1;
+   
     
     //Each npc will have their own version of this script and implement the IInteractable interface, so they can have their own version of the Interact(); function.
     [SerializeField] private string personalPrompt;
@@ -30,6 +31,7 @@ public class NPC2 : MonoBehaviour, IInteractable
             dialogue.SetActive(true);
             dialogue.GetComponent<Dialogue>().textComponent.text = string.Empty;
             dialogue.GetComponent<Dialogue>().StartDialogue();
+            
         }
         return true;
     }

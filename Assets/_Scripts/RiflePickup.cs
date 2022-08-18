@@ -15,7 +15,7 @@ public class RiflePickup : MonoBehaviour
     public Animator anim;
     private float nextTimetoPunch = 0f;
     public float punchCharge = 15f;
-    public bool obj4;
+    public bool obj3;
 
     private void Awake()
     {
@@ -46,7 +46,7 @@ public class RiflePickup : MonoBehaviour
             {
                 PlayerRifle.SetActive(true);
                 PickupRifle.SetActive(false);
-                obj4 = true;
+                obj3 = true;
             }
         }
     }

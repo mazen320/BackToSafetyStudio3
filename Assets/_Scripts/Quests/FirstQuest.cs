@@ -6,6 +6,8 @@ public class FirstQuest : QuestState
 {
     public override void UpdateState(QuestManager questManager)
     {
+  
+
         if (Vector3.Distance(questManager.phone.transform.position, questManager.player.transform.position) < questManager.range)
         {
             if (Input.GetKeyDown(KeyCode.E))
