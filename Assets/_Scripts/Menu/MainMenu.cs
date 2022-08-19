@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenu;
 
     public GameObject optionsScreen;
+    public GameObject regularMenu;
 
     public void onPlayButton()
     {
@@ -16,10 +17,12 @@ public class MainMenu : MonoBehaviour
 
     public void OpenOptions()
     {
+        regularMenu.SetActive(false);
         optionsScreen.SetActive(true);
     }
     public void CloseOptions()
     {
+        regularMenu.SetActive(true);
         optionsScreen.SetActive(false);
     }
 
