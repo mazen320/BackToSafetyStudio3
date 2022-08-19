@@ -6,7 +6,7 @@ public class FifthQuest : QuestState
 {
     public override void UpdateState(QuestManager questManager)
     {
-        float dist = Vector3.Distance(questManager.church.transform.position, questManager.player.transform.position);
+        float dist = Vector3.Distance(questManager.priestNpc.transform.position, questManager.player.transform.position);
         if (dist < questManager.range)
         {
             questManager.objective5 = true;

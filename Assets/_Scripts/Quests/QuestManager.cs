@@ -20,6 +20,8 @@ public class QuestManager : MonoBehaviour
     public VehicleController vehicleController;
     public bool callAnswered;
     public float range = 2f;
+
+    public GameObject priestNpc;
     public GameObject phone;
     public GameObject player;
     public GameObject gunShop;
@@ -27,6 +29,7 @@ public class QuestManager : MonoBehaviour
     public GameObject church;
     public GameObject storageYard;
     public GameObject ammoBox;
+    public GameObject cityhall;
 
     public Waypoint wayPointTarget;
 
@@ -40,11 +43,7 @@ public class QuestManager : MonoBehaviour
     public bool objective6;
     public bool objective7;
     public bool objective8;
-    public bool objective9;
-    public bool objective10;
-    public bool objective11;
-    public bool objective12;
-    public bool objective13;
+   
 
 
     public ZombieSpawner zombieSpawner;
@@ -53,12 +52,14 @@ public class QuestManager : MonoBehaviour
     void Start()
     {
         vehicleController = vehicleController.GetComponent<VehicleController>();
+
+        priestNpc = GameObject.Find("NPCPriest");
         phone = GameObject.Find("Phone");
         ammoBox = GameObject.Find("AmmoBoxObj");
         gunShop = GameObject.Find("GunShop");
         house = GameObject.Find("HouseObj");
-        church = GameObject.Find("ChurchObj");
         storageYard = GameObject.Find("StorageYardObj");
+        cityhall = GameObject.Find("CityhallObj");
         currentState = firstQuest;
 
     }

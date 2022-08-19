@@ -16,7 +16,7 @@ public class PriestNpc : MonoBehaviour, IInteractable
     public bool Interact(Interactor interactor)//Where you do something relative to the NPC.
     {
         Debug.Log("Npc 2 Talking ");
-        if (questManager.objective5 == false)
+        if (questManager.objective4 == false)
         {
             Debug.Log("Finish first Objective ");
             lockedDialogue.SetActive(true);
@@ -27,7 +27,7 @@ public class PriestNpc : MonoBehaviour, IInteractable
         }
         else
         {
-            questManager.objective6 = true;
+            questManager.objective4 = true;
             dialogue.SetActive(true);
             dialogue.GetComponent<Dialogue>().textComponent.text = string.Empty;
             dialogue.GetComponent<Dialogue>().StartDialogue();

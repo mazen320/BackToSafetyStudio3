@@ -16,9 +16,9 @@ public class QuestUi : MonoBehaviour
     public GameObject house;
     public GameObject church;
     public GameObject storageYard;
-    
-    ///////////////////////////////////
 
+    ///////////////////////////////////
+    public GameObject objectiveCanvas;
     public GameObject c_objective0;
     public GameObject c_objective1;
     public GameObject c_objective2;
@@ -27,12 +27,7 @@ public class QuestUi : MonoBehaviour
     public GameObject c_objective5;
     public GameObject c_objective6;
     public GameObject c_objective7;
-    public GameObject c_objective8;
-    public GameObject c_objective9;
-    public GameObject c_objective10;
-    public GameObject c_objective11;
-    public GameObject c_objective12;
-    public GameObject c_objective13;
+
 
     public string objective_0;
     public string objective_1;
@@ -42,12 +37,7 @@ public class QuestUi : MonoBehaviour
     public string objective_5;
     public string objective_6;
     public string objective_7;
-    public string objective_8;
-    public string objective_9;
-    public string objective_10;
-    public string objective_11;
-    public string objective_12;
-    public string objective_13;
+
 
     TextMeshProUGUI objective0Text;
     TextMeshProUGUI objective1Text;
@@ -57,12 +47,6 @@ public class QuestUi : MonoBehaviour
     TextMeshProUGUI objective5Text;
     TextMeshProUGUI objective6Text;
     TextMeshProUGUI objective7Text;
-    TextMeshProUGUI objective8Text;
-    TextMeshProUGUI objective9Text;
-    TextMeshProUGUI objective10Text;
-    TextMeshProUGUI objective11Text;
-    TextMeshProUGUI objective12Text;
-    TextMeshProUGUI objective13Text;
 
 
 
@@ -70,13 +54,13 @@ public class QuestUi : MonoBehaviour
     {
         objective0Text = c_objective0.GetComponent<TextMeshProUGUI>();
         objective0Text.text = objective_0;
-        
+
     }
     void Start()
     {
         QuestManager = Camera.main.GetComponent<QuestManager>();
-       
 
+        objectiveCanvas = GameObject.Find("objectives canvas");
         objective1Text = c_objective1.GetComponent<TextMeshProUGUI>();
         objective2Text = c_objective2.GetComponent<TextMeshProUGUI>();
         objective3Text = c_objective3.GetComponent<TextMeshProUGUI>();
@@ -84,12 +68,6 @@ public class QuestUi : MonoBehaviour
         objective5Text = c_objective5.GetComponent<TextMeshProUGUI>();
         objective6Text = c_objective6.GetComponent<TextMeshProUGUI>();
         objective7Text = c_objective7.GetComponent<TextMeshProUGUI>();
-        objective8Text = c_objective8.GetComponent<TextMeshProUGUI>();
-        objective9Text = c_objective9.GetComponent<TextMeshProUGUI>();
-        objective10Text = c_objective10.GetComponent<TextMeshProUGUI>();
-        objective11Text = c_objective11.GetComponent<TextMeshProUGUI>();
-        objective12Text = c_objective12.GetComponent<TextMeshProUGUI>();
-        objective13Text = c_objective13.GetComponent<TextMeshProUGUI>();
 
 
     }
@@ -101,7 +79,7 @@ public class QuestUi : MonoBehaviour
         {
 
             Destroy(c_objective0);
-  
+
             objective1Text.text = objective_1;
 
 
@@ -109,10 +87,10 @@ public class QuestUi : MonoBehaviour
             {
 
                 Destroy(c_objective1);
-                
 
 
-               objective2Text.text = objective_2;
+
+                objective2Text.text = objective_2;
 
 
             }
@@ -121,9 +99,9 @@ public class QuestUi : MonoBehaviour
             {
 
                 Destroy(c_objective2);
-                
 
-               objective3Text.text = objective_3;
+
+                objective3Text.text = objective_3;
 
 
             }
@@ -132,9 +110,9 @@ public class QuestUi : MonoBehaviour
             {
 
                 Destroy(c_objective3);
-                
 
-               objective4Text.text = objective_4;
+
+                objective4Text.text = objective_4;
 
 
             }
@@ -149,7 +127,7 @@ public class QuestUi : MonoBehaviour
 
             }
 
-            if (QuestManager.objective6== true)
+            if (QuestManager.objective6 == true)
             {
 
                 Destroy(c_objective5);
@@ -174,41 +152,13 @@ public class QuestUi : MonoBehaviour
             {
 
                 Destroy(c_objective7);
+                Destroy(objectiveCanvas);
 
-                objective8Text.text = objective_8;
 
-
-            }
-
-            if (QuestManager.objective9 == true)
-            {
-
-                Destroy(c_objective8);
-
-                objective9Text.text = objective_9;
 
 
             }
-
-
-
-            if (QuestManager.objective10 == true)
-            {
-                Destroy(c_objective9);
-
-                objective10Text.text = objective_10;
-
-            }
-                if (QuestManager.objective11 == true)
-            {
-                Destroy(c_objective10);
-
-                objective11Text.text = objective_11;
-            }
-
-
         }
-
 
 
 

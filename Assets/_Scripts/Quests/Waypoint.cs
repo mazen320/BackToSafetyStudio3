@@ -19,8 +19,10 @@ public class Waypoint : MonoBehaviour
     public GameObject ammoBox;
     public GameObject gunShop;
     public GameObject house;
+    public GameObject priest;
     public GameObject church;
     public GameObject storageYard;
+    public GameObject cityhall;
 
     public GameObject player;
    
@@ -37,8 +39,9 @@ public class Waypoint : MonoBehaviour
         ammoBox = GameObject.Find("AmmoBoxObj");
         gunShop = GameObject.Find("GunShop");
         house = GameObject.Find("HouseObj");
-        church = GameObject.Find("ChurchObj");
+        priest = GameObject.Find("NPCPriest");
         storageYard = GameObject.Find("StorageYardObj");
+        cityhall = GameObject.Find("CityhallObj");
 
         target = phone;
 
@@ -108,7 +111,7 @@ public class Waypoint : MonoBehaviour
        
         if(questManager.objective4 == true)
         {
-            target = church;
+            target = priest;
         }
 
         if(questManager.objective5 == true)
@@ -119,9 +122,18 @@ public class Waypoint : MonoBehaviour
 
         if (questManager.objective6 == true)
         {
-            target = church;
+            target = priest;
         }
 
+        if(questManager.objective7 == true)
+        {
+            target = cityhall;
+        }
 
+        if (questManager.objective8 == true)
+        {
+            Destroy(img);
+            Destroy(meter);
+        }
     }
 }
