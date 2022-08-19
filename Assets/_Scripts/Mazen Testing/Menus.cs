@@ -37,6 +37,7 @@ public class Menus : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameisStopped = false;
+        canvasParent.SetActive(true);
     }
     public void Restart()
     {
