@@ -16,7 +16,7 @@ public class ZombieSpawner : MonoBehaviour
     public GameObject[] spawnPoints;
     public List<GameObject> zombies;
     public QuestManager questManager;
-    public bool spawnZombies = false;
+    public bool spawnZombies;
     public float spawnTimer;
     // Start is called before the first frame update
     void Start()
@@ -57,9 +57,9 @@ public class ZombieSpawner : MonoBehaviour
 
     IEnumerator SpawnZombie()
     {
-
-       /* if (questManager.objective2 && spawnZombies)
-        {*/
+        
+            /* if (questManager.objective2 && spawnZombies)
+             {*/
             //spawnTimer = 3;
 
             while (enemyCount < enemyLimit)
@@ -80,7 +80,8 @@ public class ZombieSpawner : MonoBehaviour
             {
                 //Debug.Log("You have spawned max enemies");
             }
-        //}   
+            //}   
+        
        
     }
 }
