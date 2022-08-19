@@ -193,7 +193,7 @@ Transform:
   m_GameObject: {fileID: 5064255173046248773}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 554.60364, y: 19.594, z: 195.907}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5064255173046352227}
@@ -237,12 +237,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648f97ea20b15814fbc249acc553d769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerRifle: {fileID: 100002, guid: 75dcb58506746b84db987c4ce01e99b5, type: 3}
+  PlayerRifle: {fileID: 0}
   PickupRifle: {fileID: 5064255173046248773}
   playerPunch: {fileID: 0}
   player: {fileID: 0}
   anim: {fileID: 5064255173053535879}
   punchCharge: 15
+  obj3: 0
 --- !u!1 &5064255173046248777
 GameObject:
   m_ObjectHideFlags: 0
