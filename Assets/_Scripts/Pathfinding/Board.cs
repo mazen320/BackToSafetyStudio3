@@ -11,10 +11,10 @@ public class Board : MonoBehaviour
     public Transform obstacleHolder;
     public static Vector2Int[] Directions = new Vector2Int[4]
     {
-        Vector2Int.up,
-        Vector2Int.right,
-        Vector2Int.down,
-        Vector2Int.left
+Vector2Int.up + Vector2Int.right,
+Vector2Int.right + Vector2Int.down,
+Vector2Int.down + Vector2Int.left,
+Vector2Int.left + Vector2Int.up
     };
     public Vector2Int MinSize;
     public Vector2Int MaxSize;
@@ -31,11 +31,16 @@ public class Board : MonoBehaviour
     }
     void OnDrawGizmos()
     {
-        if(!DrawGizmos || Tiles == null || Tiles.Count == 0)
+        if (UnityEditor.EditorApplication.isPlaying)
+        {
             return;
-            Gizmos.color = Color.red;
-        foreach(TileLogic t in Tiles.Values){   //otherwise this
-            Gizmos.DrawCube(t.WorldPosition, Vector3.one*(NodeSize/2));
+        }
+        if (!DrawGizmos || Tiles == null || Tiles.Count == 0)
+            return;
+        Gizmos.color = Color.red;
+        foreach (TileLogic t in Tiles.Values)
+        {   //otherwise this
+            Gizmos.DrawCube(t.WorldPosition, Vector3.one * (NodeSize / 2));
         }
     }
     public static TileLogic GetTile(Vector2Int position)
@@ -59,12 +64,12 @@ public class Board : MonoBehaviour
     }
     public TileLogic WorldPositionToTile(Vector3 position) // this is used when we call BuildPath in the AgentAstar
     {                                                      // this essentially helps get our agent position instead of setting it ourselves
-        Vector3 nodePosition = position/NodeSize;
+        Vector3 nodePosition = position / NodeSize;
         Vector2Int pos2D = new Vector2Int(Mathf.RoundToInt(nodePosition.x), Mathf.RoundToInt(nodePosition.z));
         TileLogic toReturn = GetTile(pos2D);
         //Debug.LogFormat("From:{0}, to {1}, Tile:{2}", position, pos2D, toReturn);
         return toReturn;
-        
+
     }
     void CreateTileLogics()
     {
@@ -91,11 +96,11 @@ public class Board : MonoBehaviour
     void CheckCollision(TileLogic tileLogic)
     {
         Collider[] colliders = Physics.OverlapSphere(tileLogic.WorldPosition, NodeSize);  //summons an invisible sphere and check if its colliding with anything
-        foreach(Collider col in colliders)
+        foreach (Collider col in colliders)
         {
             if (col.transform.CompareTag("Object"))
             {
-//                Debug.Log("Obstacle at " + tileLogic.WorldPosition);
+                //                Debug.Log("Obstacle at " + tileLogic.WorldPosition);
                 tileLogic.MoveCost = int.MaxValue;
             }
         }
